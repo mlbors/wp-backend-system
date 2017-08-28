@@ -1,0 +1,390 @@
+{
+    "key": "group_5991960371100",
+    "title": "Options",
+    "fields": [
+        {
+            "key": "field_59919614dac1c",
+            "label": "Désactiver les commentaires",
+            "name": "custom_options_disable_comments",
+            "type": "true_false",
+            "instructions": "Ne supprime pas les commentaires mais désactive les Trackbacks et permet l'intégration d'un système externe",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5991a2ed8aa1a",
+            "label": "Cacher la barre d'administration hors de wp-admin",
+            "name": "custom_options_hide_admin_bar",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5991ab2556646",
+            "label": "Supprimer les options de la bar d'administration",
+            "name": "custom_options_remove_options_admin_bar",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5991ab5056647",
+            "label": "Supprimer les meta box du Dashboard",
+            "name": "custom_options_remove_dashboard_meta_box",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5991ad9105d51",
+            "label": "Masquer les notifications relatives aux updates",
+            "name": "custom_options_remove_update_notifications",
+            "type": "true_false",
+            "instructions": "Ne masque pas le menu Extensions. Masque le menu Update (utiliser l'URL direct update-core.php).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_59928c86e279c",
+            "label": "Masquer les menus sensibles",
+            "name": "custom_options_hide_menus_to_users_bool",
+            "type": "true_false",
+            "instructions": "Masque les menus Apparence > Thèmes, Apparence > Personnaliser, Extensions, Outils, Réglages. Les menus ACF, Visual Composer, Theme Punch et BWP reCaptcha sont aussi masqués si les plugins sont activés.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_59928cb5e279d",
+            "label": "Utilisateurs concernés",
+            "name": "custom_options_hide_menus_to_users",
+            "type": "text",
+            "instructions": "Séparer les éléments par une virgule sans espace. Fournir le login de l'utilisateur.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_59928c86e279c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59928ce8e279e",
+            "label": "Masquer les options sensibles",
+            "name": "custom_options_hide_options_to_users_bool",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_59928d1ee279f",
+            "label": "Utilisateurs concernés",
+            "name": "custom_options_hide_options_to_users",
+            "type": "text",
+            "instructions": "Séparer les éléments par une virgule sans espace. Fournir le login de l'utilisateur.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_59928ce8e279e",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59919935dac1d",
+            "label": "Query Args",
+            "name": "custom_options_add_query_args",
+            "type": "text",
+            "instructions": "Séparer les éléments par une virgule sans espace.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5991995edac1e",
+            "label": "Formats d'images",
+            "name": "custom_options_add_image_sizes",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_599199a4491b0",
+                    "label": "Nom",
+                    "name": "custom_options_add_image_sizes_name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_599199b5491b1",
+                    "label": "Largeur",
+                    "name": "custom_options_add_image_sizes_width",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
+                },
+                {
+                    "key": "field_599199cc491b2",
+                    "label": "Hauteur",
+                    "name": "custom_options_add_image_sizes_height",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
+                },
+                {
+                    "key": "field_599199d9491b3",
+                    "label": "Crop",
+                    "name": "custom_options_add_image_sizes_crop",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                }
+            ]
+        },
+        {
+            "key": "field_599199f5ad4db",
+            "label": "MIMES",
+            "name": "custom_options_add_mimes",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_59919a0cad4dc",
+                    "label": "Extension",
+                    "name": "custom_options_add_mimes_extenson",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_59919a5cad4dd",
+                    "label": "Type",
+                    "name": "custom_options_add_mimes_type",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1502779591
+}

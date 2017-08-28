@@ -1,0 +1,2042 @@
+{
+    "key": "group_598989d21f793",
+    "title": "Shortcodes",
+    "fields": [
+        {
+            "key": "field_598989d465e66",
+            "label": "Shortcodes",
+            "name": "custom_shortcodes",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5989a392e6a4a",
+                    "label": "Nom",
+                    "name": "custom_shortcodes_name",
+                    "type": "text",
+                    "instructions": "Exemple: shortcode_name",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5989a50906044",
+                    "label": "Type",
+                    "name": "custom_shortcodes_type",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "posts": "Liste de Posts",
+                        "post": "Post particulier",
+                        "text": "Affichage d'un texte",
+                        "view": "Vue spécifique",
+                        "image": "Affichage d'une image",
+                        "gallery": "Affichage d'une galerie d'images"
+                    },
+                    "default_value": [
+                        "posts"
+                    ],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5989a560bd3ac",
+                    "label": "Liste de Posts",
+                    "name": "custom_shortcodes_post_lists",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5989a50906044",
+                                "operator": "==",
+                                "value": "posts"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "row",
+                    "sub_fields": [
+                        {
+                            "ID": 127,
+                            "key": "field_5989a5ee6c96a",
+                            "label": "Affichage",
+                            "name": "custom_shortcodes_post_lists_view",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 0,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_view",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "list": "Liste",
+                                "other": "Autre"
+                            },
+                            "default_value": [
+                                "list"
+                            ],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 148,
+                            "key": "field_5989b4dadcf97",
+                            "label": "Autre vue",
+                            "name": "custom_shortcodes_post_lists_view_other",
+                            "prefix": "acf",
+                            "type": "text",
+                            "value": null,
+                            "menu_order": 1,
+                            "instructions": "Le fichier doit être placé dans resources\/views\/shortcodes et être nommé selon le modèle template-name.blade.php.",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5989a5ee6c96a",
+                                        "operator": "==",
+                                        "value": "other"
+                                    }
+                                ]
+                            ],
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_view_other",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "ID": 137,
+                            "key": "field_5989aaa03953e",
+                            "label": "Type de Post",
+                            "name": "custom_shortcodes_post_lists_post_type",
+                            "prefix": "acf",
+                            "type": "text",
+                            "value": null,
+                            "menu_order": 2,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_post_type",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "post",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "ID": 128,
+                            "key": "field_5989a6326c96b",
+                            "label": "Tri",
+                            "name": "custom_shortcodes_post_lists_order",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 3,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_order",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "none": "Aucun",
+                                "asc": "Ascendant",
+                                "desc": "Descendant"
+                            },
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 145,
+                            "key": "field_5989adcd18701",
+                            "label": "Trier par",
+                            "name": "custom_shortcodes_post_lists_orderby",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 4,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5989a6326c96b",
+                                        "operator": "!=",
+                                        "value": "none"
+                                    }
+                                ]
+                            ],
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_orderby",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "none": "None",
+                                "ID": "ID",
+                                "author": "Auteur",
+                                "title": "Titre",
+                                "name": "Name",
+                                "type": "Type",
+                                "date": "Date",
+                                "modified": "Modifié",
+                                "parent": "Parent",
+                                "rand": "Hasard",
+                                "comment_count": "Commentaires",
+                                "relevance": "Pertinence",
+                                "menu_order": "Ordre du menu",
+                                "meta_value": "Meta (meta à préciser)",
+                                "meta_value_num": "Meta numérique (meta à préciser)"
+                            },
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 146,
+                            "key": "field_5989aec3bad12",
+                            "label": "Meta pour le tri",
+                            "name": "custom_shortcodes_post_lists_meta_key",
+                            "prefix": "acf",
+                            "type": "text",
+                            "value": null,
+                            "menu_order": 5,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5989a6326c96b",
+                                        "operator": "!=",
+                                        "value": "none"
+                                    },
+                                    {
+                                        "field": "field_5989adcd18701",
+                                        "operator": "==",
+                                        "value": "meta_value"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "field": "field_5989a6326c96b",
+                                        "operator": "!=",
+                                        "value": "none"
+                                    },
+                                    {
+                                        "field": "field_5989adcd18701",
+                                        "operator": "==",
+                                        "value": "meta_value_num"
+                                    }
+                                ]
+                            ],
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_meta_key",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "ID": 129,
+                            "key": "field_5989a65a6c96c",
+                            "label": "Limite",
+                            "name": "custom_shortcodes_post_lists_limit",
+                            "prefix": "acf",
+                            "type": "number",
+                            "value": null,
+                            "menu_order": 6,
+                            "instructions": "Laisser vide pour récupérer tous les Posts.",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_limit",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        },
+                        {
+                            "ID": 130,
+                            "key": "field_5989a7c49fd10",
+                            "label": "Filtrer par taxonomies",
+                            "name": "custom_shortcodes_post_lists_tax_query_bool",
+                            "prefix": "acf",
+                            "type": "true_false",
+                            "value": null,
+                            "menu_order": 7,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_tax_query_bool",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "ID": 131,
+                            "key": "field_5989a8249fd11",
+                            "label": "Filtre sur les taxonomies",
+                            "name": "custom_shortcodes_post_lists_tax_query_param",
+                            "prefix": "acf",
+                            "type": "repeater",
+                            "value": null,
+                            "menu_order": 8,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5989a7c49fd10",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_tax_query_param",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "collapsed": "",
+                            "min": 0,
+                            "max": 0,
+                            "layout": "row",
+                            "button_label": "",
+                            "sub_fields": [
+                                {
+                                    "ID": 132,
+                                    "key": "field_5989a8549fd12",
+                                    "label": "Taxonomy",
+                                    "name": "custom_shortcodes_post_lists_tax_query_param_tax",
+                                    "prefix": "acf",
+                                    "type": "text",
+                                    "value": null,
+                                    "menu_order": 0,
+                                    "instructions": "",
+                                    "required": 0,
+                                    "id": "",
+                                    "class": "",
+                                    "conditional_logic": 0,
+                                    "parent": 131,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "_name": "custom_shortcodes_post_lists_tax_query_param_tax",
+                                    "_prepare": 0,
+                                    "_valid": 1,
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "ID": 133,
+                                    "key": "field_5989a89a9fd13",
+                                    "label": "Champ",
+                                    "name": "custom_shortcodes_post_lists_tax_query_param_field",
+                                    "prefix": "acf",
+                                    "type": "select",
+                                    "value": null,
+                                    "menu_order": 1,
+                                    "instructions": "",
+                                    "required": 0,
+                                    "id": "",
+                                    "class": "",
+                                    "conditional_logic": 0,
+                                    "parent": 131,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "_name": "custom_shortcodes_post_lists_tax_query_param_field",
+                                    "_prepare": 0,
+                                    "_valid": 1,
+                                    "choices": {
+                                        "term_id": "ID du term",
+                                        "slug": "Slug",
+                                        "term_taxonomy_id": "ID de la taxonomie"
+                                    },
+                                    "default_value": [
+                                        "term_id"
+                                    ],
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "ID": 134,
+                                    "key": "field_5989a9229fd14",
+                                    "label": "Termes",
+                                    "name": "custom_shortcodes_post_lists_tax_query_param_terms",
+                                    "prefix": "acf",
+                                    "type": "text",
+                                    "value": null,
+                                    "menu_order": 2,
+                                    "instructions": "Lister les éléments en fonction du champ précédant et séparer ceux-ci par une virgule sans espace.",
+                                    "required": 0,
+                                    "id": "",
+                                    "class": "",
+                                    "conditional_logic": 0,
+                                    "parent": 131,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "_name": "custom_shortcodes_post_lists_tax_query_param_terms",
+                                    "_prepare": 0,
+                                    "_valid": 1,
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "ID": 135,
+                                    "key": "field_5989a9839fd15",
+                                    "label": "Opérateur",
+                                    "name": "custom_shortcodes_post_lists_tax_query_param_operator",
+                                    "prefix": "acf",
+                                    "type": "select",
+                                    "value": null,
+                                    "menu_order": 3,
+                                    "instructions": "",
+                                    "required": 0,
+                                    "id": "",
+                                    "class": "",
+                                    "conditional_logic": 0,
+                                    "parent": 131,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "_name": "custom_shortcodes_post_lists_tax_query_param_operator",
+                                    "_prepare": 0,
+                                    "_valid": 1,
+                                    "choices": {
+                                        "IN": "IN",
+                                        "NOT IN": "NOT IN",
+                                        "AND": "AND",
+                                        "EXISTS": "EXISTS",
+                                        "NOT EXISTS": "NOT EXISTS"
+                                    },
+                                    "default_value": [],
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
+                        },
+                        {
+                            "ID": 136,
+                            "key": "field_5989a9ca9fd16",
+                            "label": "Relation du filtre de taxonomies",
+                            "name": "custom_shortcodes_post_lists_tax_query_relation",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 9,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5989a7c49fd10",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_tax_query_relation",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "AND": "AND",
+                                "OR": "OR"
+                            },
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 138,
+                            "key": "field_5989aacf3953f",
+                            "label": "Filtrer par meta",
+                            "name": "custom_shortcodes_post_lists_meta_query_bool",
+                            "prefix": "acf",
+                            "type": "true_false",
+                            "value": null,
+                            "menu_order": 10,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_meta_query_bool",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "ID": 139,
+                            "key": "field_5989ab3239540",
+                            "label": "Filtre sur les meta",
+                            "name": "custom_shortcodes_post_lists_meta_query_param",
+                            "prefix": "acf",
+                            "type": "repeater",
+                            "value": null,
+                            "menu_order": 11,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5989aacf3953f",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_meta_query_param",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "collapsed": "",
+                            "min": 0,
+                            "max": 0,
+                            "layout": "row",
+                            "button_label": "",
+                            "sub_fields": [
+                                {
+                                    "ID": 140,
+                                    "key": "field_5989ab5839541",
+                                    "label": "Clé",
+                                    "name": "custom_shortcodes_post_lists_meta_query_key",
+                                    "prefix": "acf",
+                                    "type": "text",
+                                    "value": null,
+                                    "menu_order": 0,
+                                    "instructions": "",
+                                    "required": 0,
+                                    "id": "",
+                                    "class": "",
+                                    "conditional_logic": 0,
+                                    "parent": 139,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "_name": "custom_shortcodes_post_lists_meta_query_key",
+                                    "_prepare": 0,
+                                    "_valid": 1,
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "ID": 141,
+                                    "key": "field_5989ab7039542",
+                                    "label": "Valeur",
+                                    "name": "custom_shortcodes_post_lists_meta_query_value",
+                                    "prefix": "acf",
+                                    "type": "text",
+                                    "value": null,
+                                    "menu_order": 1,
+                                    "instructions": "Lister les valeurs en les séparant par une virgule sans espace. Les valeurs multiples ne sont toutefois prises en considération que si l'opérateur de comparaison correspond à IN, NOT IN, BETWEEN ou NOT BETWEEN.",
+                                    "required": 0,
+                                    "id": "",
+                                    "class": "",
+                                    "conditional_logic": 0,
+                                    "parent": 139,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "_name": "custom_shortcodes_post_lists_meta_query_value",
+                                    "_prepare": 0,
+                                    "_valid": 1,
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "ID": 142,
+                                    "key": "field_5989abd439543",
+                                    "label": "Opérateur",
+                                    "name": "custom_shortcodes_post_lists_meta_query_compare",
+                                    "prefix": "acf",
+                                    "type": "select",
+                                    "value": null,
+                                    "menu_order": 2,
+                                    "instructions": "",
+                                    "required": 0,
+                                    "id": "",
+                                    "class": "",
+                                    "conditional_logic": 0,
+                                    "parent": 139,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "_name": "custom_shortcodes_post_lists_meta_query_compare",
+                                    "_prepare": 0,
+                                    "_valid": 1,
+                                    "choices": {
+                                        "=": "=",
+                                        "!=": "!=",
+                                        ">": ">",
+                                        ">=": ">=",
+                                        "<": "<",
+                                        "<=": "<=",
+                                        "LIKE": "LIKE",
+                                        "NOT LIKE": "NOT LIKE",
+                                        "IN": "IN",
+                                        "NOT IN": "NOT IN",
+                                        "BETWEEN": "BETWEEN",
+                                        "NOT BETWEEN": "NOT BETWEEN",
+                                        "EXISTS": "EXISTS",
+                                        "NOT EXISTS": "EXISTS"
+                                    },
+                                    "default_value": [
+                                        "="
+                                    ],
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "ID": 143,
+                                    "key": "field_5989ac5039544",
+                                    "label": "Type",
+                                    "name": "custom_shortcodes_post_lists_meta_query_type",
+                                    "prefix": "acf",
+                                    "type": "select",
+                                    "value": null,
+                                    "menu_order": 3,
+                                    "instructions": "",
+                                    "required": 0,
+                                    "id": "",
+                                    "class": "",
+                                    "conditional_logic": 0,
+                                    "parent": 139,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "_name": "custom_shortcodes_post_lists_meta_query_type",
+                                    "_prepare": 0,
+                                    "_valid": 1,
+                                    "choices": {
+                                        "NUMERIC": "NUMERIC",
+                                        "BINARY": "BINARY",
+                                        "CHAR": "CHAR",
+                                        "DATE": "DATE",
+                                        "DATETIME": "DATETIME",
+                                        "DECIMAL": "DECIMAL",
+                                        "SIGNED": "SIGNED",
+                                        "TIME": "TIME",
+                                        "UNSIGNED": "UNSIGNED"
+                                    },
+                                    "default_value": [
+                                        "CHAR"
+                                    ],
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
+                        },
+                        {
+                            "ID": 144,
+                            "key": "field_5989acca39545",
+                            "label": "Relation du filtre de meta",
+                            "name": "custom_shortcodes_post_lists_meta_query_relation",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 12,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5989aacf3953f",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_meta_query_relation",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "AND": "AND",
+                                "OR": "OR"
+                            },
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 184,
+                            "key": "field_599170dee98e3",
+                            "label": "Statut du Post",
+                            "name": "custom_shortcodes_post_lists_post_status",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 13,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_post_status",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "publish": "publish",
+                                "pending": "pending",
+                                "draft": "draft",
+                                "auto-draft": "auto-draft",
+                                "future": "future",
+                                "private": "private",
+                                "inherit": "inherit",
+                                "trash": "trash",
+                                "any": "any"
+                            },
+                            "default_value": [
+                                "publish"
+                            ],
+                            "allow_null": 0,
+                            "multiple": 1,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 215,
+                            "key": "field_5992fbc7d22a6",
+                            "label": "Supprimer les filtres",
+                            "name": "custom_shortcodes_post_lists_suppress_filters",
+                            "prefix": "acf",
+                            "type": "true_false",
+                            "value": null,
+                            "menu_order": 14,
+                            "instructions": "Supprime les filtres appliqués à la requête, comme ceux de WPML. Laisser vide pour laisser les opérations se dérouler normalement, sans aucune altération.",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_suppress_filters",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "ID": 147,
+                            "key": "field_5989af8c02311",
+                            "label": "Champs à inclure",
+                            "name": "custom_shortcodes_post_lists_includes",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 15,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_includes",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "title": "Titre",
+                                "content": "Contenu",
+                                "excerpt": "Résumé",
+                                "thumbnail": "Image de couverture",
+                                "meta": "Meta"
+                            },
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 1,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 209,
+                            "key": "field_5992e0ee9bc11",
+                            "label": "Utiliser le cache",
+                            "name": "custom_shortcodes_post_lists_use_transient",
+                            "prefix": "acf",
+                            "type": "true_false",
+                            "value": null,
+                            "menu_order": 16,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_use_transient",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "ID": 210,
+                            "key": "field_5992e1119bc12",
+                            "label": "Durée du cache",
+                            "name": "custom_shortcodes_post_lists_transient_time",
+                            "prefix": "acf",
+                            "type": "number",
+                            "value": null,
+                            "menu_order": 17,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5992e0ee9bc11",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "parent": 125,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_post_lists_transient_time",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5989b54b35e1c",
+                    "label": "Post particulier",
+                    "name": "custom_shotcodes_display_post",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5989a50906044",
+                                "operator": "==",
+                                "value": "post"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "ID": 156,
+                            "key": "field_5989b63e35e20",
+                            "label": "Post",
+                            "name": "custom_shortcodes_display_post_post",
+                            "prefix": "acf",
+                            "type": "post_object",
+                            "value": null,
+                            "menu_order": 0,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 152,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_post_post",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "post_type": [],
+                            "taxonomy": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "return_format": "id",
+                            "ui": 1
+                        },
+                        {
+                            "ID": 153,
+                            "key": "field_5989b57235e1d",
+                            "label": "Affichage",
+                            "name": "custom_shortcodes_display_post_view",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 1,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 152,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_post_view",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "post": "Standard",
+                                "other": "Autre"
+                            },
+                            "default_value": [
+                                "default"
+                            ],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 154,
+                            "key": "field_5989b5de35e1e",
+                            "label": "Autre vue",
+                            "name": "custom_shortcodes_display_post_view_other",
+                            "prefix": "acf",
+                            "type": "text",
+                            "value": null,
+                            "menu_order": 2,
+                            "instructions": "Le fichier doit être placé dans resources\/views\/shortcodes et être nommé selon le modèle template-name.blade.php.",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5989b57235e1d",
+                                        "operator": "==",
+                                        "value": "other"
+                                    }
+                                ]
+                            ],
+                            "parent": 152,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_post_view_other",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "ID": 155,
+                            "key": "field_5989b5ed35e1f",
+                            "label": "Champs à inclure",
+                            "name": "custom_shortcodes_display_post_includes",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 3,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 152,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_post_includes",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "title": "Titre",
+                                "content": "Contenu",
+                                "excerpt": "Résumé",
+                                "thumbnail": "Image de couverture",
+                                "meta": "Meta"
+                            },
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 1,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 211,
+                            "key": "field_5992e141414dd",
+                            "label": "Utiliser le cache",
+                            "name": "custom_shortcodes_display_post_use_transient",
+                            "prefix": "acf",
+                            "type": "true_false",
+                            "value": null,
+                            "menu_order": 4,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 152,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_post_use_transient",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "ID": 212,
+                            "key": "field_5992e15a414de",
+                            "label": "Durée du cache",
+                            "name": "custom_shortcodes_display_post_transient_time",
+                            "prefix": "acf",
+                            "type": "number",
+                            "value": null,
+                            "menu_order": 5,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5992e141414dd",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "parent": 152,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_post_transient_time",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5989b3c0dcf94",
+                    "label": "Affichage d'un texte",
+                    "name": "custom_shotcodes_display_text",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5989a50906044",
+                                "operator": "==",
+                                "value": "text"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "row",
+                    "sub_fields": [
+                        {
+                            "ID": 150,
+                            "key": "field_5989b47ddcf95",
+                            "label": "Affichage",
+                            "name": "custom_shortcodes_display_text_view",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 0,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 149,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_text_view",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "text": "Standard",
+                                "other": "Autre"
+                            },
+                            "default_value": [
+                                "default"
+                            ],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 151,
+                            "key": "field_5989b4a7dcf96",
+                            "label": "Autre vue",
+                            "name": "custom_shortcodes_display_text_view_other",
+                            "prefix": "acf",
+                            "type": "text",
+                            "value": null,
+                            "menu_order": 1,
+                            "instructions": "Le fichier doit être placé dans resources\/views\/shortcodes et être nommé selon le modèle template-name.blade.php.",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5989b47ddcf95",
+                                        "operator": "==",
+                                        "value": "other"
+                                    }
+                                ]
+                            ],
+                            "parent": 149,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_text_view_other",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "ID": 157,
+                            "key": "field_5989bdd8bc12b",
+                            "label": "Texte",
+                            "name": "custom_shortcodes_display_text_value",
+                            "prefix": "acf",
+                            "type": "text",
+                            "value": null,
+                            "menu_order": 2,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 149,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_text_value",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "ID": 213,
+                            "key": "field_5992e18d414e0",
+                            "label": "Utiliser le cache",
+                            "name": "custom_shortcodes_display_text_use_transient",
+                            "prefix": "acf",
+                            "type": "true_false",
+                            "value": null,
+                            "menu_order": 3,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 149,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_text_use_transient",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "ID": 214,
+                            "key": "field_5992e1a6414e1",
+                            "label": "Durée du cache",
+                            "name": "custom_shortcodes_display_text_transient_time",
+                            "prefix": "acf",
+                            "type": "number",
+                            "value": null,
+                            "menu_order": 4,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5992e18d414e0",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "parent": 149,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_text_transient_time",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5993db2304774",
+                    "label": "Affichage d'une vue spécifique",
+                    "name": "custom_shortcodes_display_view",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5989a50906044",
+                                "operator": "==",
+                                "value": "view"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "row",
+                    "sub_fields": [
+                        {
+                            "ID": 217,
+                            "key": "field_5993db2304776",
+                            "label": "Nom de la vue",
+                            "name": "custom_shortcodes_display_view_view_other",
+                            "prefix": "acf",
+                            "type": "text",
+                            "value": null,
+                            "menu_order": 0,
+                            "instructions": "Le fichier doit être placé dans resources\/views\/shortcodes et être nommé selon le modèle template-name.blade.php.",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 216,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_view_view_other",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "ID": 218,
+                            "key": "field_5993db2304778",
+                            "label": "Utiliser le cache",
+                            "name": "custom_shortcodes_display_view_use_transient",
+                            "prefix": "acf",
+                            "type": "true_false",
+                            "value": null,
+                            "menu_order": 1,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 216,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_view_use_transient",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "ID": 219,
+                            "key": "field_5993db2304779",
+                            "label": "Durée du cache",
+                            "name": "custom_shortcodes_display_view_transient_time",
+                            "prefix": "acf",
+                            "type": "number",
+                            "value": null,
+                            "menu_order": 2,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5993db2304778",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "parent": 216,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_view_transient_time",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5993dc2567135",
+                    "label": "Affichage d'une image",
+                    "name": "custom_shortcodes_display_image",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5989a50906044",
+                                "operator": "==",
+                                "value": "image"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "row",
+                    "sub_fields": [
+                        {
+                            "ID": 225,
+                            "key": "field_5993dceb8d9bb",
+                            "label": "Image",
+                            "name": "custom_shortcodes_display_image_image",
+                            "prefix": "acf",
+                            "type": "image",
+                            "value": null,
+                            "menu_order": 0,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 220,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_image_image",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "return_format": "array",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "ID": 221,
+                            "key": "field_5993dc4267139",
+                            "label": "Affichage",
+                            "name": "custom_shortcodes_display_image_view",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 1,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 220,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_image_view",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "image": "Standard",
+                                "other": "Autre"
+                            },
+                            "default_value": [
+                                "image"
+                            ],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 222,
+                            "key": "field_5993dc2567136",
+                            "label": "Autre vue",
+                            "name": "custom_shortcodes_display_image_view_other",
+                            "prefix": "acf",
+                            "type": "text",
+                            "value": null,
+                            "menu_order": 2,
+                            "instructions": "Le fichier doit être placé dans resources\/views\/shortcodes et être nommé selon le modèle template-name.blade.php.",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5993dc4267139",
+                                        "operator": "==",
+                                        "value": "other"
+                                    }
+                                ]
+                            ],
+                            "parent": 220,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_image_view_other",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "ID": 223,
+                            "key": "field_5993dc2567137",
+                            "label": "Utiliser le cache",
+                            "name": "custom_shortcodes_display_image_use_transient",
+                            "prefix": "acf",
+                            "type": "true_false",
+                            "value": null,
+                            "menu_order": 3,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 220,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_image_use_transient",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "ID": 224,
+                            "key": "field_5993dc2567138",
+                            "label": "Durée du cache",
+                            "name": "custom_shortcodes_display_image_transient_time",
+                            "prefix": "acf",
+                            "type": "number",
+                            "value": null,
+                            "menu_order": 4,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5993dc2567137",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "parent": 220,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_image_transient_time",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5993ddd4df83e",
+                    "label": "Affichage d'une galerie d'images",
+                    "name": "custom_shortcodes_display_gallery",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5989a50906044",
+                                "operator": "==",
+                                "value": "gallery"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "row",
+                    "sub_fields": [
+                        {
+                            "ID": 227,
+                            "key": "field_5993ddd4df83f",
+                            "label": "Images",
+                            "name": "custom_shortcodes_display_gallery_images",
+                            "prefix": "acf",
+                            "type": "gallery",
+                            "value": null,
+                            "menu_order": 0,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 226,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_gallery_images",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "min": "",
+                            "max": "",
+                            "insert": "append",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "ID": 228,
+                            "key": "field_5993ddd4df840",
+                            "label": "Affichage",
+                            "name": "custom_shortcodes_display_gallery_view",
+                            "prefix": "acf",
+                            "type": "select",
+                            "value": null,
+                            "menu_order": 1,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 226,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_gallery_view",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "choices": {
+                                "gallery": "Standard",
+                                "other": "Autre"
+                            },
+                            "default_value": [
+                                "image"
+                            ],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "ID": 229,
+                            "key": "field_5993ddd4df841",
+                            "label": "Autre vue",
+                            "name": "custom_shortcodes_display_gallery_view_other",
+                            "prefix": "acf",
+                            "type": "text",
+                            "value": null,
+                            "menu_order": 2,
+                            "instructions": "Le fichier doit être placé dans resources\/views\/shortcodes et être nommé selon le modèle template-name.blade.php.",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5993ddd4df840",
+                                        "operator": "==",
+                                        "value": "other"
+                                    }
+                                ]
+                            ],
+                            "parent": 226,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_gallery_view_other",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "ID": 230,
+                            "key": "field_5993ddd4df842",
+                            "label": "Utiliser le cache",
+                            "name": "custom_shortcodes_display_gallery_use_transient",
+                            "prefix": "acf",
+                            "type": "true_false",
+                            "value": null,
+                            "menu_order": 3,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 226,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_gallery_use_transient",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "ID": 231,
+                            "key": "field_5993ddd4df843",
+                            "label": "Durée du cache",
+                            "name": "custom_shortcodes_display_gallery_transient_time",
+                            "prefix": "acf",
+                            "type": "number",
+                            "value": null,
+                            "menu_order": 4,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5993ddd4df842",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "parent": 226,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "_name": "custom_shortcodes_display_gallery_transient_time",
+                            "_prepare": 0,
+                            "_valid": 1,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": "",
+                            "max": "",
+                            "step": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-shortcodes"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1502863093
+}

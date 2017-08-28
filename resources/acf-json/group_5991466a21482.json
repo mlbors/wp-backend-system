@@ -1,0 +1,220 @@
+{
+    "key": "group_5991466a21482",
+    "title": "Redirections",
+    "fields": [
+        {
+            "key": "field_599146746358f",
+            "label": "Rediriger les Subscribers connectés qui souhaite accéder à wp-admin vers le Front End?",
+            "name": "custom_redirections_redirection_subscribers_wp_admin",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_59915bbfbd94b",
+            "label": "Rediriger la page 404",
+            "name": "custom_redirections_redirect_404_bool",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_59915be6bd94c",
+            "label": "Redirection 404",
+            "name": "custom_redirections_404_redirection",
+            "type": "text",
+            "instructions": "Exemple : \/page\/\r\nL'URL est générée via home_url(). Laisser vide pour ramener vers la Homepage.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_59915bbfbd94b",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_599168b66d566",
+            "label": "Rediriger les Attachements (images, fichiers, etc.)",
+            "name": "custom_redirections_redirect_attachements_bool",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_599168de6d567",
+            "label": "Redirection des Attachements",
+            "name": "custom_redirections_attachements_redirection",
+            "type": "text",
+            "instructions": "Exemple : \/page\/\r\nL'URL est générée via home_url(). Laisser vide pour ramener vers la Homepage.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_599168b66d566",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_599146bf63590",
+            "label": "Redirections",
+            "name": "custom_redirections_redirections",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5991472163591",
+                    "label": "Nom du template",
+                    "name": "custom_redirections_redirections_template",
+                    "type": "text",
+                    "instructions": "Exemple: template-name.php, views\/template.blade.php",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5991473f63592",
+                    "label": "Cible",
+                    "name": "custom_redirections_redirections_target",
+                    "type": "text",
+                    "instructions": "Exemple : \/page\/\r\nL'URL est générée via home_url(). Laisser vide pour ramener vers la Homepage.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_599147a663593",
+                    "label": "Condition",
+                    "name": "custom_redirections_redirections_condition",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "is_logged": "Est connecté",
+                        "not_logged": "N'est pas connecté",
+                        "both": "Les deux"
+                    },
+                    "default_value": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-redirections"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1502702621
+}
