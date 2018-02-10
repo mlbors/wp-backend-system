@@ -58,7 +58,7 @@ Some settings are available through a global settings variable. It can be called
 
 A reference to the Service Request is available through this variable.
 
-### Service request ###
+### Request Service ###
 
 Down below, a few examples of how to use the Request Service.
 
