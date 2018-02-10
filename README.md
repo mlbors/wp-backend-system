@@ -23,7 +23,7 @@ In progress.
 * Add Query Args
 * Manage redirections
 * Add theme options on the fly with [ACF Pro](https://www.advancedcustomfields.com/pro/)
-* Access to global informations, like theme settings, current user, etc.
+* Access to global informations, like theme settings, current Post, current user, etc.
 
 ## To-Do ##
 
@@ -52,7 +52,7 @@ Just set up the whole thing, hope there is no bug and go to WP Admin. A Settings
 
 ### Global Settings ###
 
-Some settins are available through a global settings variable. It can be called like so:
+Some settings are available through a global settings variable. It can be called like so:
 
     global $settings
 
@@ -110,10 +110,14 @@ Querying taxonomies
 * [ACF Pro](https://www.advancedcustomfields.com/pro/)
 * [Sage](https://github.com/roots/sage)
 
+## Why this project? ##
+
+WordPress is a fantastic tool. Unfortunately, it doesn't provide a real framework that allows developers to build custom things quickly. It is also necessary to repeat over and over the same lines of code when CPT or Shortcodes have to be added.
+
 ## Why Sage? ##
 
-Because [Sage](https://github.com/roots/sage) is really awesome and all the people that supports this project make a fantastic work. This system is DRY and allows to manage the structure of a custom WordPress theme easily and elegantly.
+Because [Sage](https://github.com/roots/sage) is really awesome and all the people supporting this project make a fantastic work. This system is DRY and allows to manage the structure of a custom WordPress theme easily and elegantly.
 
 ## Why ACF Pro? ##
 
-Because it is uncessary to reinvent the wheel. [ACF Pro](https://www.advancedcustomfields.com/pro/) is a really powerfull tool that allows to add fields to WordPress very easily.
+Because it is unnecessary to reinvent the wheel. [ACF Pro](https://www.advancedcustomfields.com/pro/) is a really powerful tool that allows to add fields to WordPress very easily.
