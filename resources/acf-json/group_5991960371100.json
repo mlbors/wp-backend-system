@@ -4,10 +4,10 @@
     "fields": [
         {
             "key": "field_59919614dac1c",
-            "label": "Désactiver les commentaires",
+            "label": "Disable comments",
             "name": "custom_options_disable_comments",
             "type": "true_false",
-            "instructions": "Ne supprime pas les commentaires mais désactive les Trackbacks et permet l'intégration d'un système externe",
+            "instructions": "It doesn't remove comments but it disallows Trackbacks and allows external comment system.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -23,7 +23,7 @@
         },
         {
             "key": "field_5991a2ed8aa1a",
-            "label": "Cacher la barre d'administration hors de wp-admin",
+            "label": "Hide admin bar outside wp-admin",
             "name": "custom_options_hide_admin_bar",
             "type": "true_false",
             "instructions": "",
@@ -42,7 +42,7 @@
         },
         {
             "key": "field_5991ab2556646",
-            "label": "Supprimer les options de la bar d'administration",
+            "label": "Remove admin bar options",
             "name": "custom_options_remove_options_admin_bar",
             "type": "true_false",
             "instructions": "",
@@ -61,7 +61,7 @@
         },
         {
             "key": "field_5991ab5056647",
-            "label": "Supprimer les meta box du Dashboard",
+            "label": "Remove meta box from Dashboard",
             "name": "custom_options_remove_dashboard_meta_box",
             "type": "true_false",
             "instructions": "",
@@ -80,10 +80,10 @@
         },
         {
             "key": "field_5991ad9105d51",
-            "label": "Masquer les notifications relatives aux updates",
+            "label": "Remove update notifications",
             "name": "custom_options_remove_update_notifications",
             "type": "true_false",
-            "instructions": "Ne masque pas le menu Extensions. Masque le menu Update (utiliser l'URL direct update-core.php).",
+            "instructions": "It doesn't hide Plugins menu. It hides Update menu (still can use update-core.php).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -99,10 +99,10 @@
         },
         {
             "key": "field_59928c86e279c",
-            "label": "Masquer les menus sensibles",
+            "label": "Hide sensitve menus",
             "name": "custom_options_hide_menus_to_users_bool",
             "type": "true_false",
-            "instructions": "Masque les menus Apparence > Thèmes, Apparence > Personnaliser, Extensions, Outils, Réglages. Les menus ACF, Visual Composer, Theme Punch et BWP reCaptcha sont aussi masqués si les plugins sont activés.",
+            "instructions": "Hide Appearance > Themes, Appearance > Customize, Plugins, Tools, Settings. ACF, Visual Composer, Theme Punch and BWP reCaptcha menus are also hidden.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -118,10 +118,10 @@
         },
         {
             "key": "field_59928cb5e279d",
-            "label": "Utilisateurs concernés",
+            "label": "Targeted users",
             "name": "custom_options_hide_menus_to_users",
             "type": "text",
-            "instructions": "Séparer les éléments par une virgule sans espace. Fournir le login de l'utilisateur.",
+            "instructions": "List elements, comma separated, no space. Give user login.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -145,7 +145,7 @@
         },
         {
             "key": "field_59928ce8e279e",
-            "label": "Masquer les options sensibles",
+            "label": "Hide sensitive options",
             "name": "custom_options_hide_options_to_users_bool",
             "type": "true_false",
             "instructions": "",
@@ -164,10 +164,10 @@
         },
         {
             "key": "field_59928d1ee279f",
-            "label": "Utilisateurs concernés",
+            "label": "Targeted users",
             "name": "custom_options_hide_options_to_users",
             "type": "text",
-            "instructions": "Séparer les éléments par une virgule sans espace. Fournir le login de l'utilisateur.",
+            "instructions": "List elements, comma separated, no space. Give user login.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -194,7 +194,7 @@
             "label": "Query Args",
             "name": "custom_options_add_query_args",
             "type": "text",
-            "instructions": "Séparer les éléments par une virgule sans espace.",
+            "instructions": "List elements, comma separated, no space.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -210,7 +210,7 @@
         },
         {
             "key": "field_5991995edac1e",
-            "label": "Formats d'images",
+            "label": "Image sizes",
             "name": "custom_options_add_image_sizes",
             "type": "repeater",
             "instructions": "",
@@ -229,7 +229,7 @@
             "sub_fields": [
                 {
                     "key": "field_599199a4491b0",
-                    "label": "Nom",
+                    "label": "Name",
                     "name": "custom_options_add_image_sizes_name",
                     "type": "text",
                     "instructions": "",
@@ -248,7 +248,7 @@
                 },
                 {
                     "key": "field_599199b5491b1",
-                    "label": "Largeur",
+                    "label": "Width",
                     "name": "custom_options_add_image_sizes_width",
                     "type": "number",
                     "instructions": "",
@@ -269,7 +269,7 @@
                 },
                 {
                     "key": "field_599199cc491b2",
-                    "label": "Hauteur",
+                    "label": "Height",
                     "name": "custom_options_add_image_sizes_height",
                     "type": "number",
                     "instructions": "",
@@ -386,5 +386,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1502779591
+    "modified": 1518017189
 }

@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_598d97aad0e47",
-            "label": "Rôles utilisateurs",
+            "label": "User roles",
             "name": "custom_user_roles",
             "type": "repeater",
             "instructions": "",
@@ -23,7 +23,7 @@
             "sub_fields": [
                 {
                     "key": "field_598d97d5d0e48",
-                    "label": "Nom",
+                    "label": "Name",
                     "name": "custom_user_roles_name",
                     "type": "text",
                     "instructions": "",
@@ -42,10 +42,10 @@
                 },
                 {
                     "key": "field_598d996fd17f7",
-                    "label": "Nom formaté",
+                    "label": "Formated name",
                     "name": "custom_user_roles_formated_name",
                     "type": "text",
-                    "instructions": "Exemple: the_user_role",
+                    "instructions": "Example: the_user_role",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -61,7 +61,7 @@
                 },
                 {
                     "key": "field_598d97dfd0e49",
-                    "label": "Capacités",
+                    "label": "Capabilities",
                     "name": "custom_user_roles_capabilities",
                     "type": "select",
                     "instructions": "",
@@ -167,5 +167,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1502452102
+    "modified": 1518015288
 }

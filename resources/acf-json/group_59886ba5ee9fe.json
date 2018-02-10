@@ -23,7 +23,7 @@
             "sub_fields": [
                 {
                     "key": "field_59886ba6038ad",
-                    "label": "Nom formaté",
+                    "label": "Formated name",
                     "name": "option_custom_taxonomies_formated_name",
                     "type": "text",
                     "instructions": "Example: the_taxonomy_name",
@@ -45,7 +45,7 @@
                     "label": "Post Type",
                     "name": "option_custom_taxonomies_post_type",
                     "type": "text",
-                    "instructions": "Exemple : the-post-type-name",
+                    "instructions": "Example : the-post-type-name",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -80,7 +80,7 @@
                 },
                 {
                     "key": "field_59886ba603bb9",
-                    "label": "Accessible publiquement",
+                    "label": "Publicly accessible",
                     "name": "option_custom_taxonomies_publicly_queryable",
                     "type": "true_false",
                     "instructions": "",
@@ -99,7 +99,7 @@
                 },
                 {
                     "key": "field_59886ba603c7c",
-                    "label": "Montrer dans l'administration",
+                    "label": "Show in admin",
                     "name": "option_custom_taxonomies_show_ui",
                     "type": "true_false",
                     "instructions": "",
@@ -118,7 +118,7 @@
                 },
                 {
                     "key": "field_59886ba603d06",
-                    "label": "Montrer dans le menu de l'administration",
+                    "label": "Show in admin menu",
                     "name": "option_custom_taxonomies_show_in_nav_menus",
                     "type": "true_false",
                     "instructions": "",
@@ -137,7 +137,7 @@
                 },
                 {
                     "key": "field_59886ba603d7e",
-                    "label": "Montrer le nuages de tags",
+                    "label": "Show tagcloud",
                     "name": "option_custom_taxonomies_show_tagcloud",
                     "type": "true_false",
                     "instructions": "",
@@ -156,7 +156,7 @@
                 },
                 {
                     "key": "field_59886ba6040ad",
-                    "label": "Création automatiques de colonnes",
+                    "label": "Show admin column",
                     "name": "option_custom_taxonomies_show_admin_column",
                     "type": "true_false",
                     "instructions": "",
@@ -194,7 +194,7 @@
                 },
                 {
                     "key": "field_59886ba603f51",
-                    "label": "Hiérarchie",
+                    "label": "Hierarchical",
                     "name": "option_custom_post_types_hierarchical",
                     "type": "true_false",
                     "instructions": "",
@@ -232,7 +232,7 @@
                 },
                 {
                     "key": "field_59886ba60420f",
-                    "label": "Inclus dans REST",
+                    "label": "Show in REST",
                     "name": "option_custom_taxonomies_show_in_rest",
                     "type": "true_false",
                     "instructions": "",
@@ -251,7 +251,7 @@
                 },
                 {
                     "key": "field_59886ba60429e",
-                    "label": "Base rest",
+                    "label": "REST Base",
                     "name": "option_custom_taxonomies_rest_base",
                     "type": "text",
                     "instructions": "",
@@ -270,7 +270,7 @@
                 },
                 {
                     "key": "field_59886ba604341",
-                    "label": "Controller Rest",
+                    "label": "REST Controller",
                     "name": "option_custom_taxonomies_rest_controller_class",
                     "type": "text",
                     "instructions": "",
@@ -308,7 +308,7 @@
                     "sub_fields": [
                         {
                             "key": "field_59886ba6364e1",
-                            "label": "Nom",
+                            "label": "Name",
                             "name": "option_custom_taxonomies_labels_name",
                             "type": "text",
                             "instructions": "",
@@ -327,7 +327,7 @@
                         },
                         {
                             "key": "field_59886ba63655e",
-                            "label": "Singulier",
+                            "label": "Singular",
                             "name": "option_custom_taxonomies_labels_singular_name",
                             "type": "text",
                             "instructions": "",
@@ -651,5 +651,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1502172532
+    "modified": 1518015435
 }

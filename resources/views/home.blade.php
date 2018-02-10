@@ -15,6 +15,7 @@
     @include('partials.content-page')
   @endwhile
 
+    {{-- 
     @if(!empty($sections))
     @foreach($sections as $section)
       <section id="{{ $section->post_name }}" class="page-section home-section">
@@ -23,5 +24,6 @@
       </section>
     @endforeach
   @endif
-
+  --}}
+      
 @endsection

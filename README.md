@@ -1,33 +1,106 @@
-A WordPress backend system built with Sage 9 and ACF Pro.
+# WordPress System #
 
-# About
+A WordPress admin system built with [Sage](https://github.com/roots/sage) and [ACF Pro](https://www.advancedcustomfields.com/pro/) to create and manage Custom Post Types, Custom Taxonomies, Shortcodes and more. It is like a WordPress Theme Builder/Customizer.
+
+## About ##
 
 This system is based on [Sage](https://github.com/roots/sage) and [ACF Pro](https://www.advancedcustomfields.com/pro/) that is not included in this project.
 
 The main purpose of this project is to build a simple system that let the users manage WordPress functionalities and add some new ones. This system is not perfect and it is not finished.
 
-## Features
+## Status ##
 
-* Create custom post types
-* Create custom taxonomies
-* Generate shortcodes
-* Use transients with shortcodes and manage cache
-* Create user roles
+In progress.
+
+## Features ##
+
+* Create Custom Post Types
+* Create Custom Taxonomies
+* Generate Shortcodes (Posts list, Single Post, Text, Image, Image Gallery, Specific view)
+* Use Transients with Shortcodes and manage cache
+* Create User Roles
 * Manage menus visibility
-* Add query args
+* Add Query Args
 * Manage redirections
-* Regisiter Widgets
-* Add theme options on the fly with ACF Pro
+* Add theme options on the fly with [ACF Pro](https://www.advancedcustomfields.com/pro/)
+* Access to global informations, like theme settings, current user, etc.
 
-## To-Do
+## To-Do ##
 
 * Fix bugs
 * Refactor if necesseray
 * Improve architecture
 * Write good and useful tests
 * Add functionalities
+* Find a solution for Widgets
+* Offer a way to decouple it from [Sage](https://github.com/roots/sage)
+* Offer a way to extend it
 
-## Requirements
+## About the structure ##
+
+Basically, the system works like so: a Theme object, ITheme, acts like a Main. It will ask an Initializer object, which implements the IInitializer interface, to, obviously, initialize the whole thing. The Initializer will ask a SideFacade, which implements the ISideFacade interface, to execute the required operations and to send back settings data that will be available globally. An ISide object is then created, depending on the displayed part of WordPress, the website itself or the WP Admin part. A Side object has several IManager objects that will setup a bunch of IHandlers object. Each Handler object is completely independent of the others and doesn’t know them. Every Handler is assigned to a specific task and for that has a IRepository object. Requests are performed through a Request Service. When a request is executed, it will ask the Manager object, that it has in reference, to dispatch the request. The Manager will then ask every initialized Handler if it can handle the request. If it can, it will then perform the operation through its Repository. This last one will get the data through a IContext object before putting it into an IEntity object that will be encapsulated in a IThemeObject object. Even if they share the same interface, every ThemeObject has its own attributes and methods. Some ThemeObject objects also have a State, implementing the IState interface, that defines the behaviour they must adopt when they are called. Each Shortcode object, for example, has its own specific behaviour depending of its type. A IShortcode object has also access to the TransientService that manages transients.
+
+For now, because this project is based on [Sage](https://github.com/roots/sage), it uses Blade as a template engine and the Illuminate Contaner for Dependency Injection.
+
+## Usage ##
+
+Here a few things about how to use this system.
+
+### CPT, CT, Shortcodes, Options, etc. ###
+
+Just set up the whole thing, hope there is no bug and go to WP Admin. A Settings menu should be here.
+
+### Global Settings ###
+
+Some settins are available through a global settings variable. It can be called like so:
+
+    global $settings
+
+A reference to the Service Request is available through this variable.
+
+### Service request ###
+
+Down below, a few examples of how to use the Request Service.
+
+Querying Posts
+
+    $posts = $this->_requestService::buildRequestAndExecute([
+                  'type' => 'post', 
+                  'action' => 'query'
+                  ], 
+                  [
+                  'method' => '', 
+                  'method_args' => ['method' => ''], 
+                  'query_args' => ['args' => $args]
+                  ]);
+
+    $result = $posts->getData();
+
+Querying a specifc Post
+
+    $this->_requestService::buildRequestAndExecute([
+            'type' => 'post', 
+            'action' => 'query'
+            ], 
+            [
+            'method' => 'ByID', 
+            'method_args' => [], 
+            'query_args' => ['ID' => 5]
+            ]);
+
+Querying taxonomies
+
+    $this->_requestService::buildRequestAndExecute([
+            'type' => 'taxonomy', 
+            'action' => 'query'
+            ], 
+            [
+            'method' => '', 
+            'method_args' => ['output' => 'objects', 'operator' => 'and'], 
+            'query_args' => ['args' => []]
+            ]);
+
+## Requirements ##
 
 * [WordPress](https://wordpress.org/) >= 4.7
 * [PHP](http://php.net/manual/en/install.php) >= 5.6.4
@@ -35,107 +108,12 @@ The main purpose of this project is to build a simple system that let the users 
 * [Node.js](http://nodejs.org/) >= 6.9.x
 * [Yarn](https://yarnpkg.com/en/docs/install)
 * [ACF Pro](https://www.advancedcustomfields.com/pro/)
+* [Sage](https://github.com/roots/sage)
 
-# Sage 
+## Why Sage? ##
 
-The information written below belongs to Sage made by Roots team. See their [repo](https://github.com/roots/sage) for more information.
+Because [Sage](https://github.com/roots/sage) is really awesome and all the people that supports this project make a fantastic work. This system is DRY and allows to manage the structure of a custom WordPress theme easily and elegantly.
 
-## Features
+## Why ACF Pro? ##
 
-* Sass for stylesheets
-* ES6 for JavaScript
-* [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
-* [Browsersync](http://www.browsersync.io/) for synchronized browser testing
-* [Laravel Blade](https://laravel.com/docs/5.3/blade) as a templating engine
-* [Controller](https://github.com/soberwp/controller) for passing data to Blade templates
-* CSS framework options:
-  * [Bootstrap 4](http://getbootstrap.com/)
-  * [Foundation](http://foundation.zurb.com/)
-  * [Tachyons](http://tachyons.io/)
-  * None (blank slate)
-* Font Awesome (optional)
-
-See a working example at [roots-example-project.com](https://roots-example-project.com/).
-
-## Requirements
-
-Make sure all dependencies have been installed before moving on:
-
-* [WordPress](https://wordpress.org/) >= 4.7
-* [PHP](http://php.net/manual/en/install.php) >= 5.6.4
-* [Composer](https://getcomposer.org/download/)
-* [Node.js](http://nodejs.org/) >= 6.9.x
-* [Yarn](https://yarnpkg.com/en/docs/install)
-
-## Theme installation
-
-Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
-
-```shell
-# @ app/themes/ or wp-content/themes/
-$ composer create-project roots/sage your-theme-name dev-master
-```
-
-During theme installation you will have the options to:
-
-* Update theme headers (theme name, description, author, etc.)
-* Select a CSS framework (Bootstrap, Foundation, Tachyons, none)
-* Add Font Awesome
-* Configure Browsersync (path to theme, local development URL)
-
-## Theme structure
-
-```shell
-themes/your-theme-name/   # → Root of your Sage based theme
-├── app/                  # → Theme PHP
-│   ├── lib/Sage/         # → Blade implementation, asset manifest
-│   ├── admin.php         # → Theme customizer setup
-│   ├── filters.php       # → Theme filters
-│   ├── helpers.php       # → Helper functions
-│   └── setup.php         # → Theme setup
-├── composer.json         # → Autoloading for `app/` files
-├── composer.lock         # → Composer lock file (never edit)
-├── dist/                 # → Built theme assets (never edit)
-├── node_modules/         # → Node.js packages (never edit)
-├── package.json          # → Node.js dependencies and scripts
-├── resources/            # → Theme assets and templates
-│   ├── assets/           # → Front-end assets
-│   │   ├── config.json   # → Settings for compiled assets
-│   │   ├── build/        # → Webpack and ESLint config
-│   │   ├── fonts/        # → Theme fonts
-│   │   ├── images/       # → Theme images
-│   │   ├── scripts/      # → Theme JS
-│   │   └── styles/       # → Theme stylesheets
-│   ├── controllers/      # → Controller files
-│   ├── functions.php     # → Composer autoloader, theme includes
-│   ├── index.php         # → Never manually edit
-│   ├── screenshot.png    # → Theme screenshot for WP admin
-│   ├── style.css         # → Theme meta information
-│   └── views/            # → Theme templates
-│       ├── layouts/      # → Base templates
-│       └── partials/     # → Partial templates
-└── vendor/               # → Composer packages (never edit)
-```
-
-## Theme setup
-
-Edit `app/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, and sidebars.
-
-## Theme development
-
-* Run `yarn` from the theme directory to install dependencies
-* Update `resources/assets/config.json` settings:
-  * `devUrl` should reflect your local development hostname
-  * `publicPath` should reflect your WordPress folder structure (`/wp-content/themes/sage` for non-[Bedrock](https://roots.io/bedrock/) installs)
-
-### Build commands
-
-* `yarn run start` — Compile assets when file changes are made, start Browsersync session
-* `yarn run build` — Compile and optimize the files in your assets directory
-* `yarn run build:production` — Compile assets for production
-
-## Documentation
-
-Sage 9 documentation is currently in progress and can be viewed at [https://github.com/roots/docs/tree/sage-9/sage](https://github.com/roots/docs/tree/sage-9/sage).
-
-Controller documentation is available at [https://github.com/soberwp/controller#usage](https://github.com/soberwp/controller#usage).
+Because it is uncessary to reinvent the wheel. [ACF Pro](https://www.advancedcustomfields.com/pro/) is a really powerfull tool that allows to add fields to WordPress very easily.

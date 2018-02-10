@@ -1,54 +1,40 @@
 <?php
 /**
- * WP Backend System - Back End
+ * WP System - BackManager - Concrete Class
  *
- * @since       02.08.2017
+ * @since       12.01.2018
  * @version     1.0.0.0
  * @author      mlbors
- * @copyright   
+ * @copyright
  */
 
 namespace App\Theme\Managers;
 
-use \App\Theme\Posts\PostHandler as PostHandler;
-use \App\Theme\Options\OptionsHandler as OptionsHandler;
-use \App\Theme\Redirections\RedirectionsHandler as RedirectionsHandler;
-use \App\Theme\Settings\SettingsHandler as SettingsHandler;
-use \App\Theme\Taxonomies\TaxonomyHandler as TaxonomyHandler;
-use \App\Theme\Transients\TransientHandler as TransientHandler;
-use \App\Theme\Users\UserHandler as UserHandler;
-use \App\Theme\Widgets\WidgetHandler as WidgetHandler;
+use Roots\Sage\Container;
 
-/******************************/
-/********** BACK END **********/
-/******************************/
+use App\Theme\Interfaces\IRequestServiceBuilder as IRequestServiceBuilder;
+use App\Theme\Interfaces\IViewControllerFactory as IViewControllerFactory;
+use App\Theme\Interfaces\IViewController as IViewController;
+use App\Theme\Abstracts\AbstractManager as AbstractManager;
+use App\Theme\Helpers\ACFOptionsHelper as ACFOptionsHelper;
 
-class BackManager implements Manager
+/**********************************/
+/********** BACK MANAGER **********/
+/**********************************/
+
+class BackManager extends AbstractManager
 {
-
     /*******************************/
     /********** ATTRIBUTS **********/
     /*******************************/
 
-    /*
-     * @var PostHander $_postHandler object that handles posts
-     * @var TaxonomyHandler $_taxonomyHandler object that handles taxonomies
-     * @var RedirectionsHandler $_redirectionsHandler object that handles redirections
-     * @var UserHandler $_userHandler object that handles users
-     * @var OptionsHandler $_optionsHandler object that handles options
-     * @var TransientHandler $_transientHandler object that handles transients
-     * @var WidgetHandler $_widgetHandler object thant handles widgets
-     * @var SettingsHandler $_settingsHandler object that handles theme settings
+    /**
+     * @var IViewControllerFactory $_viewControllerFactory object that creates view controllers
+     * @var IViewController $_viewController object that renders views
      */
 
-    private $_postHandler;
-    private $_taxonomyHandler;
-    private $_redirectionsHandler;
-    private $_userHandler;
-    private $_optionsHandler;
-    private $_transientHandler;
-    private $_widgetHandler;
-    private $_settingsHandler;
+    protected $_viewController;
+    protected $_viewControllerFactory;
 
     /*********************************************************************************/
     /*********************************************************************************/
@@ -57,375 +43,16 @@ class BackManager implements Manager
     /********** CONSTRUCT **********/
     /*******************************/
 
-    /*
-     * @param ManagerBuilder $managerBuilder manager builder
+    /**
+     * @param Array $handlersFactories array object that creates handlers
+     * @param IRequestServiceBuilder $requestServiceBuilder object that creates request services
+     * @param IViewControllerFactory $_viewControllerFactory object that creates view controllers
      */
 
-    public function __construct(ManagerBuilder $managerBuilder)
-    {
-        $this->_setValues($managerBuilder);
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /*****************************/
-    /********** SETTERS **********/
-    /*****************************/
-
-    /**********/
-    /********** SET VALUES **********/
-    /**********/
-
-    /*
-     * @param ManagerBuilder $managerBuilder manager builder
-     */
-
-    private function _setValues(ManagerBuilder $managerBuilder)
-    {
-        $this->setPostHandler($managerBuilder->getPostHandler());
-        $this->setTaxonomyHandler($managerBuilder->getTaxonomyHandler());
-        $this->setRedirectionsHandler($managerBuilder->getRedirectionsHandler());
-        $this->setUserHandler($managerBuilder->getUserHandler());
-        $this->setOptionsHandler($managerBuilder->getOptionsHandler());
-        $this->setTransientHandler($managerBuilder->getTransientHandler());
-        $this->setWidgetHandler($managerBuilder->getWidgetHandler());
-        $this->_setSettingsHandler($managerBuilder->getSettingsHandler());
-    }
-
-    /**********/
-    /********** SETTINGS HANDLER **********/
-    /**********/
-
-    /*
-     * @param SettingsHandler $settingsHandler object that handles theme settings
-     */
-
-    private function _setSettingsHandler(SettingsHandler $settingsHandler)
-    {
-        $this->_settingsHandler = $settingsHandler;
-    }
-
-    /**********/
-    /********** POST HANDLER **********/
-    /**********/
-
-    /*
-     * @param PostHander $postHandler post handler to use
-     */
-
-    public function setPostHandler(PostHandler $postHandler)
-    {
-        $this->_postHandler = $postHandler;
-    }
-
-    /**********/
-    /********** TAXONOMY HANDLER **********/
-    /**********/
-
-    /*
-     * @param TaxonomyHandler $taxonomyHandler post handler to use
-     */
-
-    public function setTaxonomyHandler(TaxonomyHandler $taxonomyHandler)
-    {
-        $this->_taxonomyHandler = $taxonomyHandler;
-    }
-
-    /**********/
-    /********** REDIRECTIONS HANDLER **********/
-    /**********/
-
-    /*
-     * @param RedirectionsHandler $redirectionsHandler object that handles redirections
-     */
-
-    public function setRedirectionsHandler(RedirectionsHandler $redirectionsHandler)
-    {
-        $this->_redirectionsHandler = $redirectionsHandler;
-    }
-
-    /**********/
-    /********** USER HANDLER **********/
-    /**********/
-
-    /*
-     * @param UserHandler $_userHandler object that handles users
-     */
-
-    public function setUserHandler(UserHandler $userHandler)
-    {
-        $this->_userHandler = $userHandler;
-    }
-
-    /**********/
-    /********** OPTIONS HANDLER **********/
-    /**********/
-
-    /*
-     * @param OptionsHandler $optionsHandler object that handles users
-     */
-
-    public function setOptionsHandler(OptionsHandler $optionsHandler)
-    {
-        $this->_optionsHandler = $optionsHandler;
-    }
-
-    /**********/
-    /********** TRANSIENT HANDLER **********/
-    /**********/
-
-    /*
-     * @param TransientHandler $transientHandler object that handles transients
-     */
-
-    public function setTransientHandler(TransientHandler $transientHandler)
-    {
-        $this->_transientHandler = $transientHandler;
-    }
-
-    /**********/
-    /********** WIDGET HANDLER **********/
-    /**********/
-
-    /*
-     * @param WidgetHandler $widgetHandler object thant handles widgets
-     */
-
-    public function setWidgetHandler(WidgetHandler $widgetHandler)
-    {
-        $this->_widgetHandler = $widgetHandler;
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /*****************************/
-    /********** GETTERS **********/
-    /*****************************/
-
-    /**********/
-    /********** POST HANDLER **********/
-    /**********/
-
-    /*
-     * @return PostHander
-     */
-
-    public function getPostHandler(): PostHandler
-    {
-        return $this->_postHandler;
-    }
-
-    /**********/
-    /********** TAXONOMY HANDLER **********/
-    /**********/
-
-    /*
-     * @return TaxonomyHander
-     */
-
-    public function getTaxonomyHandler(): TaxonomyHandler
-    {
-        return $this->_taxonomyHandler;
-    }
-
-    /**********/
-    /********** REDIRECTIONS HANDLER **********/
-    /**********/
-
-    /*
-     * @return RedirectionsHander
-     */
-
-    public function getRedirectionsHandler(): RedirectionsHandler
-    {
-        return $this->_redirectionsHandler;
-    }
-
-    /**********/
-    /********** USER HANDLER **********/
-    /**********/
-
-    /*
-     * @return UserHander
-     */
-
-    public function getUserHandler(): UserHandler
-    {
-        return $this->_userHandler;
-    }
-
-    /**********/
-    /********** OPTIONS HANDLER **********/
-    /**********/
-
-    /*
-     * @return OptionsHandler
-     */
-
-    public function getOptionsHandler(): OptionsHandler
-    {
-        return $this->_optionsHandler;
-    }
-
-    /**********/
-    /********** TRANSIENT HANDLER **********/
-    /**********/
-
-    /*
-     * @return TransientHandler
-     */
-
-    public function getTransientHandler(): TransientHandler
-    {
-        return $this->_transientHandler;
-    }
-
-    /**********/
-    /********** WIDGET HANDLER **********/
-    /**********/
-
-    /*
-     * @return WidgetHandler
-     */
-
-    public function getWidgetHandler(): WidgetHandler
-    {
-        return $this->_widgetHandler;
-    }
-
-    /**********/
-    /********** SETTINGS HANDLER **********/
-    /**********/
-
-    /*
-     * @return SettingsHandler
-     */
-
-    public function getSettingsHandler(): SettingsHandler
-    {
-        return $this->_settingsHandler;
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /*************************************/
-    /********** SET UP SETTINGS **********/
-    /*************************************/
-
-    private function _setUpSettings()
-    {
-        $this->_settingsHandler->init();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /********************************************/
-    /********** GENERATE SETTINGS PAGE **********/
-    /********************************************/
-
-    private function _generateSettingsPage()
-    {
-        $this->_settingsHandler->generateSettingsPage();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /**************************************/
-    /********** SET REDIRECTIONS **********/
-    /**************************************/
-
-    private function _setUpRedirections()
-    {
-        $this->_redirectionsHandler->setUpRedirections();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /************************************/
-    /********** SET USER ROLES **********/
-    /************************************/
-
-    private function _setUpUserRoles()
-    {
-        $this->_userHandler->setUpUserRoles();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /***********************************************/
-    /********** SET USER ROLES PURGE PAGE **********/
-    /***********************************************/
-
-    private function _setUpUserRolesPurgePage()
-    {
-        $this->_userHandler->generatePurgePage();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /*****************************/
-    /********** SET CPT **********/
-    /*****************************/
-
-    private function _setUpCPT()
-    {
-        $this->_postHandler->setCPT();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /*******************************************/
-    /********** SET CUSTOM TAXONOMIES **********/
-    /*******************************************/
-
-    private function _setUpCustomTaxonomies()
-    {
-        $this->_taxonomyHandler->setCustomTaxonomies();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /***************************************/
-    /********** SET UP TRANSIENTS **********/
-    /***************************************/
-
-    private function _setUpTransients()
-    {
-        $this->_transientHandler->init();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /************************************/
-    /********** SET UP WIDGETS **********/
-    /************************************/
-
-    private function _setUpWidgets()
-    {
-        $this->_widgetHandler->setUpWidgets();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /************************************/
-    /********** SET UP OPTIONS **********/
-    /************************************/
-
-    private function _setUpOptions()
-    {
-        $this->_optionsHandler->setUpOptions();
+    public function __construct(array $handlerFactories, IRequestServiceBuilder $requestServiceBuilder, IViewControllerFactory $viewControllerFactory)
+    {   
+        parent::__construct($handlerFactories, $requestServiceBuilder);
+        $this->_setManagerValues($viewControllerFactory);
     }
 
     /*********************************************************************************/
@@ -437,19 +64,152 @@ class BackManager implements Manager
 
     public function init()
     {
-        try {
-            $this->_setUpSettings();
-            $this->_generateSettingsPage();
-            $this->_setUpRedirections();
-            $this->_setUpUserRoles();
-            $this->_setUpUserRolesPurgePage();
-            $this->_setUpCPT();
-            $this->_setUpCustomTaxonomies();
-            $this->_setUpTransients();
-            $this->_setUpWidgets();
-            $this->_setUpOptions();
-        } catch (\Exception $e) {
-            return false;
+        ACFOptionsHelper::initACFOptions();
+        $this->initHandlers();
+        $this->_viewController->display();
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /****************************************/
+    /********** SET MANAGER VALUES **********/
+    /****************************************/
+
+    /**
+     * @param IViewControllerFactory $_viewControllerFactory object that creates view controllers
+     */
+
+    protected function _setManagerValues(IViewControllerFactory $viewControllerFactory)
+    {
+        $this->_setViewControllerFactory($viewControllerFactory);
+        $this->_instantiateViewController();
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*****************************************/
+    /********** SET VIEW CONTROLLER **********/
+    /*****************************************/
+
+    /**
+     * @param IViewController $_viewController object that renders views
+     */
+
+    protected function _setViewController(IViewController $viewController)
+    {
+        $this->_viewController = $viewController;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*************************************************/
+    /********** SET VIEW CONTROLLER FACTORY **********/
+    /*************************************************/
+
+    /**
+     * @param IViewControllerFactory $_viewControllerFactory object that creates view controllers
+     */
+
+    protected function _setViewControllerFactory(IViewControllerFactory $viewControllerFactory)
+    {
+        $this->_viewControllerFactory = $viewControllerFactory;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*****************************************/
+    /********** GET VIEW CONTROLLER **********/
+    /*****************************************/
+
+    /**
+     * @return IViewController
+     */
+
+    public function getViewController(): IViewController 
+    {
+        return $this->_viewController;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*************************************************/
+    /********** GET VIEW CONTROLLER FACTORY **********/
+    /*************************************************/
+
+    /**
+     * @return IViewControllerFactory
+     */
+
+    public function getViewControllerFactory(): IViewControllerFactory
+    {
+        return $this->_viewControllerFactory;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /**********************************/
+    /********** GET SETTINGS **********/
+    /**********************************/
+
+    /**
+     * @return Array
+     */
+
+    public function getSettings(): array
+    {
+        $settings = [];
+        $settings['current_user'] = $this->_getCurrentUser();
+        return $settings;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /**************************************/
+    /********** GET CURRENT USER **********/
+    /**************************************/
+
+    /**
+     * @return Array
+     */
+
+    protected function _getCurrentUser(): array
+    {
+        $result = [];
+        $currentUser = $this->_requestService::buildRequestAndExecute([
+            'type' => 'user', 
+            'action' => 'query'
+            ], 
+            [
+            'method' => 'current', 
+            'method_args' => [], 
+            'query_args' => []
+            ]);
+
+        $data = $currentUser->getCurrentUserData();
+
+        if (!empty($data) && is_array($data) && count(array_filter($data)) > 0) {
+            $result = $data;
         }
+
+        return $result;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*************************************************/
+    /********** INSTANTIATE VIEW CONTROLLER **********/
+    /*************************************************/
+
+    protected function _instantiateViewController()
+    {
+        $this->_setViewController($this->_viewControllerFactory->create());
     }
 }

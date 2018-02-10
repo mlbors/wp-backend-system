@@ -1,36 +1,34 @@
 <?php
 /**
- * WP Backend System - Init
+ * WP System - Theme
  *
  * @since       31.07.2017
- * @version     1.0.0.0
+ * @version     2.0.0.0
  * @author      mlbors
- * @copyright   
+ * @copyright
  */
 
 namespace App;
 
-use \App\Theme\Main as Main;
+use Roots\Sage\Container;
+
+use \App\Theme\Theme as Theme;
 
 /********************************/
 /********** INIT THEME **********/
 /********************************/
 
 add_action('after_setup_theme', function() {
-    global $main;
-    $main = Main::init();
+
+    sage()->singleton('sage.theme', function() {
+        return new Theme();
+    });
+
+    $container = Container::getInstance();
+    $theme = $container->make(Theme::class);
+    $theme->init();
+    $theme->setGlobalSettings();
 });
 
 /*********************************************************************************/
 /*********************************************************************************/
-
-/********************************/
-/********** AFTER INIT **********/
-/********************************/
-
-add_action('wp', function(){
-    global $main;
-    global $settings;
-    $main->retrieveSettings();
-    $settings = $main->getSettings();
-});

@@ -1,15 +1,15 @@
 {
-  "name": "backend-system",
-  "version": "1.0.0.0",
+  "name": "WP System",
+  "version": "2.0.0.0",
   "author": "mlbors",
   "homepage": "https://www.mlbors.ch/",
-  "private": false,
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/mlbors/wp-backend-system.git"
+    "url": "hhttps://github.com/mlbors/wp-system.git"
   },
   "bugs": {
-    "url": "https://github.com/mlbors/wp-backend-system/issues"
+    "url": "https://github.com/mlbors/wp-system/issues"
   },
   "licenses": [
     {

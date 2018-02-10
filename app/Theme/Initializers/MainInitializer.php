@@ -1,158 +1,55 @@
 <?php
 /**
- * WP Backend System - Initializer
+ * WP System - MainInitializer - Concrete Class
  *
- * @since       31.07.2017
+ * @since       12.01.2018
  * @version     1.0.0.0
  * @author      mlbors
- * @copyright   
+ * @copyright
  */
 
 namespace App\Theme\Initializers;
 
-use \App\Theme\Sides\FrontSideFactory as FrontSideFactory;
-use \App\Theme\Sides\BackSideFactory as BackSideFactory;
-use \App\Theme\Facades\MainFacadeFactory as MainFacadeFactory;
+use Roots\Sage\Container;
+
+use App\Theme\Abstracts\AbstractInitializer as AbstractInitializer;
+use App\Theme\Interfaces\ISideFacadeFactory as ISideFacadeFactory;
 
 /**************************************/
-/********** INITIALIZER MAIN **********/
+/********** MAIN INITIALIZER **********/
 /**************************************/
 
-final class MainInitializer implements Initializer
+class MainInitializer extends AbstractInitializer
 {
-
-    /*******************************/
-    /********** ATTRIBUTS **********/
-    /*******************************/
-
-    /**********/
-    /********** PRIVATE **********/
-    /**********/
-
-    /*
-     * @var SideFactory $_sideFactory object that creates side
-     * @var Side $_side object that handle the side on which the user is
-     * @var FacadeFactory $_facadeFacotry object that creates facade
-     * @var Facade $_facade object that retrieves and manage settings to use same easily in other parts of the theme
-     * @var Array $_settings array of settings fill in Facade
-     */
-
-    private $_sideFactory;
-    private $_side;
-    private $_facadeFacotry;
-    private $_facade;
-    private $_settings;
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
     /*******************************/
     /********** CONSTRUCT **********/
     /*******************************/
 
-    public function __construct()
-    {
-        $this->_setValues();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /*****************************/
-    /********** SETTERS **********/
-    /*****************************/
-
-    /**********/
-    /********** SET VALUES **********/
-    /*********/
-
-    private function _setValues() 
-    {
-        $this->_setSideFactory();
-        $this->_setSide();
-        $this->_setFacadeFactory();
-        $this->_setFacade();
-    }
-
-    /**********/
-    /********** SIDE FACTORY **********/
-    /*********/
-
-    private function _setSideFactory()
-    {
-        if (is_admin()) {
-            $this->_sideFactory = new BackSideFactory();
-        } else {
-            $this->_sideFactory = new FrontSideFactory();
-        }      
-    }
-
-    /**********/
-    /********** SIDE **********/
-    /*********/
-
-    private function _setSide()
-    {
-        $this->_side = $this->_sideFactory->createSide();
-    }
-
-    /**********/
-    /********** FACADE FACTORY **********/
-    /*********/
-
-    private function _setFacadeFactory()
-    {
-        $this->_facadeFactory = new MainFacadeFactory();     
-    }
-
-    /**********/
-    /********** FACADE **********/
-    /*********/
-
-    private function _setFacade()
-    {
-        $this->_facade = $this->_facadeFactory->create($this->_side);
-    }
-
-    /**********/
-    /********** SETTINGS **********/
-    /*********/
-
-    private function _setSettings(array $settings)
-    {
-        $this->_settings = $settings;
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /*****************************/
-    /********** GETTERS **********/
-    /*****************************/
-
-    /**********/
-    /********** SETTINGS **********/
-    /**********/
-
-    /*
-     * @return Array
+    /**
+     * @param ISideFacadeFactory $sideFacadeFactory object that creates facades 
      */
 
-    public function getSettings(): array
+    public function __construct(ISideFacadeFactory $sideFacadeFactory)
     {
-        return $this->_settings;
+        $this->_setValues($sideFacadeFactory);
     }
 
     /*********************************************************************************/
     /*********************************************************************************/
 
-    /***************************************/
-    /********** RETRIEVE SETTINGS **********/
-    /***************************************/
+    /********************************/
+    /********** SET VALUES **********/
+    /********************************/
 
-    public function retrieveSettings()
+    /**
+     * @param ISideFacadeFactory $sideFacadeFactory object that creates facades 
+     */
+
+    private function _setValues(ISideFacadeFactory $sideFacadeFactory)
     {
-        $this->_setSettings($this->_facade->retrieveSettings()); 
+        $container = Container::getInstance();
+        $this->_setSideFacadeFactory($sideFacadeFactory);
+        $this->_setSideFacade($this->_sideFacadeFactory->create());
     }
 
     /*********************************************************************************/
@@ -162,18 +59,24 @@ final class MainInitializer implements Initializer
     /********** INIT **********/
     /**************************/
 
-    /*
-     * @return Bool
-     */
-
-    public function init(): bool
+    public function init()
     {
-        try {
-            $this->_side->generate(); 
-            return true;
-        } catch (\Exception $e) {
-            return false;
-        }
+        $this->_sideFacade->generateSide();
     }
 
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /**********************************/
+    /********** GET SETTINGS **********/
+    /**********************************/
+
+    /**
+     * @return Array
+     */
+
+    public function getSettings(): array {
+        $this->_setSettings($this->_sideFacade->getSettings());
+        return $this->_settings;
+    }
 }

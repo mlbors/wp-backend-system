@@ -8,7 +8,7 @@
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/wp-content/themes/wp-backend-system",
+  "publicPath": "/wp-content/themes/enovinfo",
   "devUrl": "http://localhost:8000",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",

@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_599146746358f",
-            "label": "Rediriger les Subscribers connectés qui souhaite accéder à wp-admin vers le Front End?",
+            "label": "Redirect Subsribers users to website (preventing simple users to access wp-admin)",
             "name": "custom_redirections_redirection_subscribers_wp_admin",
             "type": "true_false",
             "instructions": "",
@@ -23,7 +23,7 @@
         },
         {
             "key": "field_59915bbfbd94b",
-            "label": "Rediriger la page 404",
+            "label": "Redirect 404",
             "name": "custom_redirections_redirect_404_bool",
             "type": "true_false",
             "instructions": "",
@@ -42,10 +42,10 @@
         },
         {
             "key": "field_59915be6bd94c",
-            "label": "Redirection 404",
+            "label": "404 redirection",
             "name": "custom_redirections_404_redirection",
             "type": "text",
-            "instructions": "Exemple : \/page\/\r\nL'URL est générée via home_url(). Laisser vide pour ramener vers la Homepage.",
+            "instructions": "Example : \/page\/\r\nURL generated with home_url(). Leave empty to target homepage.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -69,7 +69,7 @@
         },
         {
             "key": "field_599168b66d566",
-            "label": "Rediriger les Attachements (images, fichiers, etc.)",
+            "label": "Redirect Attachements (images, files, etc.)",
             "name": "custom_redirections_redirect_attachements_bool",
             "type": "true_false",
             "instructions": "",
@@ -88,10 +88,10 @@
         },
         {
             "key": "field_599168de6d567",
-            "label": "Redirection des Attachements",
+            "label": "Attachements redirection",
             "name": "custom_redirections_attachements_redirection",
             "type": "text",
-            "instructions": "Exemple : \/page\/\r\nL'URL est générée via home_url(). Laisser vide pour ramener vers la Homepage.",
+            "instructions": "Example : \/page\/\r\nURL generated with home_url(). Leave empty to target homepage.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -134,10 +134,10 @@
             "sub_fields": [
                 {
                     "key": "field_5991472163591",
-                    "label": "Nom du template",
+                    "label": "Template name",
                     "name": "custom_redirections_redirections_template",
                     "type": "text",
-                    "instructions": "Exemple: template-name.php, views\/template.blade.php",
+                    "instructions": "Example: template-name.php, views\/template.blade.php",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -153,10 +153,10 @@
                 },
                 {
                     "key": "field_5991473f63592",
-                    "label": "Cible",
+                    "label": "Target",
                     "name": "custom_redirections_redirections_target",
                     "type": "text",
-                    "instructions": "Exemple : \/page\/\r\nL'URL est générée via home_url(). Laisser vide pour ramener vers la Homepage.",
+                    "instructions": "Example : \/page\/\r\nURL generated with home_url(). Leave empty to target homepage.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -184,9 +184,9 @@
                         "id": ""
                     },
                     "choices": {
-                        "is_logged": "Est connecté",
-                        "not_logged": "N'est pas connecté",
-                        "both": "Les deux"
+                        "is_logged": "Is logged",
+                        "not_logged": "Not logged",
+                        "both": "Both"
                     },
                     "default_value": [],
                     "allow_null": 0,
@@ -216,5 +216,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1502702621
+    "modified": 1518016770
 }

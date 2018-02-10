@@ -23,7 +23,7 @@
             "sub_fields": [
                 {
                     "key": "field_59881a7973f77",
-                    "label": "Nom formaté",
+                    "label": "Formated name",
                     "name": "option_custom_post_types_formated_name",
                     "type": "text",
                     "instructions": "Example: the-cpt-name",
@@ -61,7 +61,7 @@
                 },
                 {
                     "key": "field_5988267873f79",
-                    "label": "Accessible publiquement",
+                    "label": "Publicly accessible",
                     "name": "option_custom_post_types_publicly_queryable",
                     "type": "true_false",
                     "instructions": "",
@@ -80,7 +80,7 @@
                 },
                 {
                     "key": "field_5988269d73f7a",
-                    "label": "Montrer dans l'administration",
+                    "label": "Show in admin",
                     "name": "option_custom_post_types_show_ui",
                     "type": "true_false",
                     "instructions": "",
@@ -99,7 +99,7 @@
                 },
                 {
                     "key": "field_598826b673f7b",
-                    "label": "Montrer dans le menu de l'administration",
+                    "label": "Show in admin menu",
                     "name": "option_custom_post_types_show_in_menu",
                     "type": "true_false",
                     "instructions": "",
@@ -118,7 +118,7 @@
                 },
                 {
                     "key": "field_598826d573f7c",
-                    "label": "Exclure de la recherche",
+                    "label": "Exclude from search",
                     "name": "option_custom_post_types_exclude_from_search",
                     "type": "true_false",
                     "instructions": "",
@@ -156,7 +156,7 @@
                 },
                 {
                     "key": "field_598827e708ba9",
-                    "label": "Dispose d'une archive",
+                    "label": "Has archive",
                     "name": "option_custom_post_types_has_archive",
                     "type": "true_false",
                     "instructions": "",
@@ -175,7 +175,7 @@
                 },
                 {
                     "key": "field_5988285808baa",
-                    "label": "Hiérarchie",
+                    "label": "Hierarchical",
                     "name": "option_custom_post_types_hierarchical",
                     "type": "true_false",
                     "instructions": "",
@@ -194,7 +194,7 @@
                 },
                 {
                     "key": "field_5988287f323db",
-                    "label": "Position dans le menu",
+                    "label": "Menu position",
                     "name": "option_custom_post_types_menu_postion",
                     "type": "number",
                     "instructions": "",
@@ -215,7 +215,7 @@
                 },
                 {
                     "key": "field_598828c8323dc",
-                    "label": "Supporte",
+                    "label": "Supports",
                     "name": "option_custom_post_types_supports",
                     "type": "select",
                     "instructions": "",
@@ -227,17 +227,17 @@
                         "id": ""
                     },
                     "choices": {
-                        "title": "Titre",
-                        "editor": "Éditeur",
-                        "author": "Auteur",
-                        "thumbnail": "Image de couverture",
-                        "excerpt": "Résumé",
+                        "title": "Title",
+                        "editor": "Editor",
+                        "author": "Author",
+                        "thumbnail": "Thumbnail",
+                        "excerpt": "Excerpt",
                         "trackbacks": "Trackbacks",
-                        "custom-fields": "Champs personnalisés",
-                        "comments": "Commentaires",
-                        "revisions": "Révisions",
-                        "page-attributes": "Attributs de pages",
-                        "posts-formats": "Formats de Posts"
+                        "custom-fields": "Custom fields",
+                        "comments": "Comments",
+                        "revisions": "Revisions",
+                        "page-attributes": "Page attributes",
+                        "posts-formats": "Posts formats"
                     },
                     "default_value": [],
                     "allow_null": 0,
@@ -249,10 +249,10 @@
                 },
                 {
                     "key": "field_59882999e5d36",
-                    "label": "Icône",
+                    "label": "Icon",
                     "name": "option_custom_post_types_menu_icon",
                     "type": "text",
-                    "instructions": "Exemple: dashicons-editor-help\r\n(Voir https:\/\/developer.wordpress.org\/resource\/dashicons\/)",
+                    "instructions": "Example: dashicons-editor-help\r\n(See https:\/\/developer.wordpress.org\/resource\/dashicons\/)",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -268,7 +268,7 @@
                 },
                 {
                     "key": "field_598829ebe5d37",
-                    "label": "Inclus dans REST",
+                    "label": "Show in REST",
                     "name": "option_custom_post_types_show_in_rest",
                     "type": "true_false",
                     "instructions": "",
@@ -287,7 +287,7 @@
                 },
                 {
                     "key": "field_59882a08e5d38",
-                    "label": "Base rest",
+                    "label": "REST Base",
                     "name": "option_custom_post_types_rest_base",
                     "type": "text",
                     "instructions": "",
@@ -306,7 +306,7 @@
                 },
                 {
                     "key": "field_59882a25e5d39",
-                    "label": "Controller Rest",
+                    "label": "REST Controller",
                     "name": "option_custom_post_types_rest_controller_class",
                     "type": "text",
                     "instructions": "",
@@ -344,7 +344,7 @@
                     "sub_fields": [
                         {
                             "key": "field_59882dce6c22b",
-                            "label": "Nom",
+                            "label": "Name",
                             "name": "option_custom_post_types_labels_name",
                             "type": "text",
                             "instructions": "",
@@ -363,7 +363,7 @@
                         },
                         {
                             "key": "field_59882de76c22c",
-                            "label": "Singulier",
+                            "label": "Singular",
                             "name": "option_custom_post_types_labels_singular_name",
                             "type": "text",
                             "instructions": "",
@@ -858,5 +858,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1502172541
+    "modified": 1530971275	
 }

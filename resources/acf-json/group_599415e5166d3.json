@@ -23,10 +23,10 @@
             "sub_fields": [
                 {
                     "key": "field_59941605d536e",
-                    "label": "Nom",
+                    "label": "Name",
                     "name": "custom_widgets_name",
                     "type": "text",
-                    "instructions": "Doit correspondre au nom de la classe. Cette option ne créé pas la classe automatiquement. Provoquera une erreur si la classe n'existe pas.",
+                    "instructions": "Must match with a class name. It doesn't create the class. It will throw an error if the class doesn't exist.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -60,5 +60,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1502877715
+    "modified": 1518016508
 }
