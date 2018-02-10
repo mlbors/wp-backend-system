@@ -120,7 +120,7 @@ Because [Sage](https://github.com/roots/sage) is really awesome and all the peop
 
 ## Why ACF Pro? ##
 
-Because it is unnecessary to reinvent the wheel. [ACF Pro](https://www.advancedcustomfields.com/pro/) is a really powerful tool that allows to add fields to WordPress very easily.
+Because it is unnecessary to reinvent the wheel. [ACF Pro](https://www.advancedcustomfields.com/pro/) is a really powerful tool that allows to add fields to _WordPress_ very easily.
 
 ## Installation ##
 
