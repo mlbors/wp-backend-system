@@ -63,6 +63,7 @@ class OptionHideOptionsToUsersState extends AbstractOptionState
                     unset($submenu['theme-general-settings'][7]);
                     unset($submenu['theme-general-settings'][8]);
                     unset($submenu['theme-general-settings'][9]);
+                    unset($submenu['theme-general-settings'][10]);
                     
                 }
 

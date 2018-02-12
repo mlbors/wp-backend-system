@@ -177,6 +177,12 @@ final class ACFOptionsHelper
                             'capability'	=> 		'manage_options'
                         ),
                         7 => array(
+                            'page_title' 	=> 		'APIs and Network',
+                            'menu_title'	=> 		'APIs and Network',
+                            'parent_slug'	=> 		'theme-general-settings',
+                            'capability'	=> 		'manage_options'
+                        ),
+                        8 => array(
                             'page_title' 	=> 		'User Roles',
                             'menu_title'	=> 		'User Roles',
                             'parent_slug'	=> 		'theme-general-settings',
