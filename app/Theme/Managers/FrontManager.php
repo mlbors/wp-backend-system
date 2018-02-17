@@ -65,6 +65,7 @@ class FrontManager extends AbstractManager
         $settings['visual_settings'] = $this->_getVisualSettings();
         $settings['current_user'] = $this->_getCurrentUser();
         $settings['current_post'] = $this->_getCurrentPost();
+        $settings['apis'] = $this->_getAPIS();
         $settings['request_service'] = $this->_requestService;
         return $settings;
     }
@@ -161,6 +162,38 @@ class FrontManager extends AbstractManager
         $result['post'] = $currentPost;
         $result['meta'] = $currentPost->getAllMeta();
         $result['acf_fields'] = $currentPost->getAllAcfFields();
+        return $result;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /******************************/
+    /********** GET APIS **********/
+    /******************************/
+
+    /**
+     * @return Array
+     */
+
+    protected function _getAPIS(): array
+    {
+        $result = [];
+
+        $apis = $this->_requestService::buildRequestAndExecute([
+            'type' => 'api', 
+            'action' => 'query'
+            ], 
+            [
+            'method' => '', 
+            'method_args' => [], 
+            'query_args' => []
+            ]);
+
+        foreach($apis as $api) {
+            array_push($result, $api->getData());
+        }
+
         return $result;
     }
 }

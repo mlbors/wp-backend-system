@@ -1,6 +1,6 @@
 <?php
 /**
- * WP System - VisualSettingsHandler - Abstract Class
+ * WP System - APISHandler - Abstract Class
  *
  * @since       12.01.2018
  * @version     1.0.0.0
@@ -18,11 +18,11 @@ use App\Theme\Interfaces\IRequestService as IRequestService;
 use App\Theme\Interfaces\IRequest as IRequest;
 use App\Theme\Abstracts\AbstractHandler as AbstractHandler;
 
-/*********************************************/
-/********** VISUAL SETTINGS HANDLER **********/
-/*********************************************/
+/**********************************/
+/********** APIS HANDLER **********/
+/**********************************/
 
-class VisualSettingsHandler extends AbstractHandler
+class APISHandler extends AbstractHandler
 {
     /*******************************/
     /********** CONSTRUCT **********/
@@ -67,7 +67,7 @@ class VisualSettingsHandler extends AbstractHandler
             return false;
         }
 
-        if ($request->args['type'] === 'visual' && method_exists($this->_repository, $request->args['action'])) {
+        if ($request->args['type'] === 'api' && method_exists($this->_repository, $request->args['action'])) {
             return true;
         }
 
@@ -97,25 +97,26 @@ class VisualSettingsHandler extends AbstractHandler
 
     public function get()
     {
-        $settings = $this->_getVisualSettings();
-        return $settings;
+        $apis = $this->_getAPIS();
+        return $apis;
     }
 
     /*********************************************************************************/
     /*********************************************************************************/
 
-    /*****************************************/
-    /********** GET VISUAL SETTINGS **********/
-    /*****************************************/
+    /******************************/
+    /********** GET APIS **********/
+    /******************************/
 
     /**
      * @return Array
      */
 
-    protected function _getVisualSettings(): array
+    protected function _getAPIS(): array
     {
+        $array = [];
         $request = $this->_requestService::buildRequest([
-            'type' => 'visual', 
+            'type' => 'api', 
             'action' => 'query'
             ], 
             [
@@ -123,6 +124,12 @@ class VisualSettingsHandler extends AbstractHandler
             'method_args' => [], 
             'query_args' => []
             ]);
-        return $this->handleRequest($request);
+        $result = $this->handleRequest($request);
+
+        if (!empty($result) && is_array($result)) {
+            $array = $result;
+        }
+
+        return $array;
     }
 }

@@ -16,6 +16,7 @@ use App\Theme\Interfaces\IManager as IManager;
 use App\Theme\Interfaces\IRequestServiceBuilder as IRequestServiceBuilder;
 use App\Theme\Abstracts\AbstractManagerBuilder as AbstractManagerBuilder;
 use App\Theme\Builders\RequestServiceBuilder as RequestServiceBuilder;
+use App\Theme\Factories\APISHandlerFactory as APISHandlerFactory;
 use App\Theme\Factories\CPTHandlerFactory as CPTHandlerFactory;
 use App\Theme\Factories\CTHandlerFactory as CTHandlerFactory;
 use App\Theme\Factories\OptionsHandlerFactory as OptionsHandlerFactory;
@@ -62,7 +63,8 @@ class FrontManagerBuilder extends AbstractManagerBuilder
             $this->_container->make(RedirectionsHandlerFactory::class),
             $this->_container->make(OptionsHandlerFactory::class),
             $this->_container->make(VisualSettingsHandlerFactory::class),
-            $this->_container->make(ShortcodesHandlerFactory::class)
+            $this->_container->make(ShortcodesHandlerFactory::class),
+            $this->_container->make(APISHandlerFactory::class)
         ];
     }
 

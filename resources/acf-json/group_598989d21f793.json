@@ -761,6 +761,25 @@
                             "min": "",
                             "max": "",
                             "step": ""
+                        },
+                        {
+                            "key": "field_5a86e64ac3599",
+                            "label": "Use Theme Object objects? Otherwise, WP Post objects will be use.",
+                            "name": "custom_shortcodes_post_lists_use_theme_objects",
+                            "type": "true_false",
+                            "instructions": "Using WP Post allows to use something like $data->have_posts() directly in templates.\r\nUsing Theme Object doesn't allow to directly set up the Loop but offers more business logic than WP Post.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ]
                 },
@@ -936,6 +955,25 @@
                             "min": "",
                             "max": "",
                             "step": ""
+                        },
+                        {
+                            "key": "field_5a86e69dc359a",
+                            "label": "Use Theme Object objects? Otherwise, WP Post objects will be use.",
+                            "name": "custom_shortcodes_post_lists_use_theme_objects",
+                            "type": "true_false",
+                            "instructions": "Using WP Post allows to use something like $data->have_posts() directly in templates.\r\nUsing Theme Object doesn't allow to directly set up the Loop but offers more business logic than WP Post.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ]
                 },
@@ -1500,5 +1538,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1518016411
+    "modified": 1518790927
 }

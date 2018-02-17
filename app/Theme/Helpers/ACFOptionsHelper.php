@@ -177,8 +177,8 @@ final class ACFOptionsHelper
                             'capability'	=> 		'manage_options'
                         ),
                         7 => array(
-                            'page_title' 	=> 		'APIs and Network',
-                            'menu_title'	=> 		'APIs and Network',
+                            'page_title' 	=> 		'APIs',
+                            'menu_title'	=> 		'APIs',
                             'parent_slug'	=> 		'theme-general-settings',
                             'capability'	=> 		'manage_options'
                         ),

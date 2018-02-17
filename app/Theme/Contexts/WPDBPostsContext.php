@@ -58,6 +58,11 @@ class WPDBPostsContext extends AbstractContext
             return get_posts($queryArgs['args']);
         }
 
+        if ($methodArgs['use_theme_object']) {
+            $query = new WP_Query($queryArgs['args']);
+            return $query->posts;
+        }
+
         return new WP_Query($queryArgs['args']);
     }
 
