@@ -114,6 +114,7 @@ class VisualSettingsHandler extends AbstractHandler
 
     protected function _getVisualSettings(): array
     {
+        $array = [];
         $request = $this->_requestService::buildRequest([
             'type' => 'visual', 
             'action' => 'query'
@@ -123,6 +124,12 @@ class VisualSettingsHandler extends AbstractHandler
             'method_args' => [], 
             'query_args' => []
             ]);
-        return $this->handleRequest($request);
+        $result = $this->handleRequest($request);
+
+        if (!empty($result) && is_array($result)) {
+            $array = $result;
+        }
+
+        return $array;
     }
 }

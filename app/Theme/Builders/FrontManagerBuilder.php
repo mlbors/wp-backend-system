@@ -27,6 +27,7 @@ use App\Theme\Factories\TaxonomiesHandlerFactory as TaxonomiesHandlerFactory;
 use App\Theme\Factories\UsersHandlerFactory as UsersHandlerFactory;
 use App\Theme\Factories\UserRolesHandlerFactory as UserRolesHandlerFactory;
 use App\Theme\Factories\VisualSettingsHandlerFactory as VisualSettingsHandlerFactory;
+use App\Theme\Factories\WidgetsHandlerFactory as WidgetsHandlerFactory;
 use App\Theme\Managers\FrontManager as FrontManager;
 
 /*******************************************/
@@ -64,7 +65,8 @@ class FrontManagerBuilder extends AbstractManagerBuilder
             $this->_container->make(OptionsHandlerFactory::class),
             $this->_container->make(VisualSettingsHandlerFactory::class),
             $this->_container->make(ShortcodesHandlerFactory::class),
-            $this->_container->make(APISHandlerFactory::class)
+            $this->_container->make(APISHandlerFactory::class),
+            $this->_container->make(WidgetsHandlerFactory::class)
         ];
     }
 

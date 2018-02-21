@@ -246,21 +246,25 @@ abstract class AbstractShortcodeState implements IState
 
     protected function _renderShortcode()
     {
-        ob_start();
-        
-        $view = '';
+        try {
+            ob_start();
+            
+            $view = '';
 
-        if (!empty($this->_data['view'])) {
-            $view = $this->_data['view']; 
+            if (!empty($this->_data['view'])) {
+                $view = $this->_data['view']; 
+            }
+
+            if ($view === 'other' || (empty($view) && !empty($this->_data['view_other']))) {
+                $view = $this->_data['view_other'];
+            }
+
+            $template = 'shortcodes/' . $view;
+            echo \App\template($template, ['data' => $this->_result]);
+            return ob_get_clean();
+        } catch (\Exception $e) {
+            return false;
         }
-
-        if ($view === 'other' || (empty($view) && !empty($this->_data['view_other']))) {
-            $view = $this->_data['view_other'];
-        }
-
-        $template = 'shortcodes/' . $view;
-        echo \App\template($template, ['data' => $this->_result]);
-        return ob_get_clean();
     }
 
     /*********************************************************************************/

@@ -11,6 +11,7 @@
 namespace App\Theme\Helpers;
 
 use Roots\Sage\Container;
+use App\Theme\Helpers\ArraysHelper as ArraysHelper;
 
 /***************************************/
 /********** ACF FIELDS HELPER **********/
@@ -44,11 +45,16 @@ final class ACFFieldsHelper
     {
         $groups = self::_getGroupFields($requestService);
 
-        if (!self::_checkGroupFields($groups)) {
+        if (!ArraysHelper::checkArray($groups)) {
             return false;
         }
 
         $array = self::_loopOverGroups($groups, $optionName, $prefix);
+
+        if (!ArraysHelper::checkArray($array)) {
+            return false;
+        }
+
         return self::_unfoldArray($array);
     }
 
@@ -85,27 +91,6 @@ final class ACFFieldsHelper
         }
 
         return $results;
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /****************************************/
-    /********** CHECK GROUP FIELDS **********/
-    /****************************************/
-
-    /**
-     * @param Object $group group of fields
-     * @return Boolean
-     */
-
-    private static function _checkGroupFields($groups): bool
-    {
-        if (empty($groups)|| !is_array($groups) || count(array_filter($groups)) === 0 || !$groups) {
-            return false;
-        }
-
-        return true;
     }
 
     /*********************************************************************************/

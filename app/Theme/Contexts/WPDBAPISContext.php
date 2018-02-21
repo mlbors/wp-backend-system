@@ -19,6 +19,7 @@ use App\Theme\Interfaces\IEntity as IEntity;
 use App\Theme\Interfaces\IEntityFactory as IEntityFactory;
 use App\Theme\Abstracts\AbstractContext as AbstractContext;
 use App\Theme\Helpers\ACFFieldsHelper as ACFFieldsHelper;
+use App\Theme\Helpers\ArraysHelper as ArraysHelper;
 
 /****************************************/
 /********** WP DB APIS CONTEXT **********/
@@ -58,11 +59,14 @@ class WPDBAPISContext extends AbstractContext
         $result = [];
         $apis = ACFFieldsHelper::parseOptions($this->_requestService, 'acf-options-apis', ['custom_apis_']);
 
-        foreach($apis as $a => $api) {
-            if (!empty($api)) {
-                array_push($result, (object)['name' => $a, 'value' => $api]);
+        if (ArraysHelper::checkArray($apis)) {
+            foreach($apis as $a => $api) {
+                if (!empty($api)) {
+                    array_push($result, (object)['name' => $a, 'value' => $api]);
+                }
             }
         }
+
         return $result;
     }
 }

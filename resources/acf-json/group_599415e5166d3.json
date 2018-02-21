@@ -26,7 +26,7 @@
                     "label": "Name",
                     "name": "custom_widgets_name",
                     "type": "text",
-                    "instructions": "Must match with a class name. It doesn't create the class. It will throw an error if the class doesn't exist.",
+                    "instructions": "Must match with a class name. It doesn't create the class. The name of the file must match the class name. The file must be placed in Widgets or Extends\/Widgets.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -60,5 +60,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1518016508
+    "modified": 1519036335
 }

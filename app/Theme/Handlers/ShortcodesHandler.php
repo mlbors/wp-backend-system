@@ -114,6 +114,7 @@ class ShortcodesHandler extends AbstractHandler implements IRegister
 
     protected function _getShortcodes(): array
     {
+        $array = [];
         $request = $this->_requestService::buildRequest([
             'type' => 'shortcode', 
             'action' => 'query'
@@ -124,7 +125,12 @@ class ShortcodesHandler extends AbstractHandler implements IRegister
             'query_args' => []
             ]);
         $result = $this->handleRequest($request);
-        return $result;
+        
+        if (!empty($result) && is_array($result)) {
+            $array = $result;
+        }
+
+        return $array;
     }
 
     /*********************************************************************************/

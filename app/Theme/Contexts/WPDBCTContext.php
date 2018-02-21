@@ -20,6 +20,7 @@ use App\Theme\Interfaces\IEntity as IEntity;
 use App\Theme\Interfaces\IEntityFactory as IEntityFactory;
 use App\Theme\Abstracts\AbstractContext as AbstractContext;
 use App\Theme\Helpers\ACFFieldsHelper as ACFFieldsHelper;
+use App\Theme\Helpers\ArraysHelper as ArraysHelper;
 
 /***************************************/
 /********** WP DB CT CONTEXT **********/
@@ -53,13 +54,16 @@ class WPDBCTContext extends AbstractContext
      * @param Array $queryArgs args for query
      * @return Array
      */
-    protected function _queryCT($methodArgs, $queryArgs)
+    
+    protected function _queryCt($methodArgs, $queryArgs)
     {
         $result = [];
         $ct = ACFFieldsHelper::parseOptions($this->_requestService, 'acf-options-taxonomies', ['option_custom_taxonomies_labels_', 'option_custom_taxonomies_']);
 
-        foreach($ct as $v => $value) {
-            array_push($result, (object)$value);
+        if (ArraysHelper::checkArray($ct)) {
+            foreach($ct as $v => $value) {
+                array_push($result, (object)$value);
+            }
         }
 
         return $result;
@@ -78,7 +82,7 @@ class WPDBCTContext extends AbstractContext
      * @return Mixed Bool || WP Post Type || WP Error)
      */
 
-    protected function _registerCT($methodArgs, $queryArgs)
+    protected function _registerCt($methodArgs, $queryArgs)
     {
         if (!$this->_checkQueryArgs($queryArgs)) {
             return false;

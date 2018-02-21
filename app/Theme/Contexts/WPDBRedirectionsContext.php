@@ -19,6 +19,7 @@ use App\Theme\Interfaces\IEntity as IEntity;
 use App\Theme\Interfaces\IEntityFactory as IEntityFactory;
 use App\Theme\Abstracts\AbstractContext as AbstractContext;
 use App\Theme\Helpers\ACFFieldsHelper as ACFFieldsHelper;
+use App\Theme\Helpers\ArraysHelper as ArraysHelper;
 
 /************************************************/
 /********** WP DB REDIRECITONS CONTEXT **********/
@@ -58,25 +59,30 @@ class WPDBRedirectionsContext extends AbstractContext
         $result = [];
         $redirections = ACFFieldsHelper::parseOptions($this->_requestService, 'acf-options-redirections', ['custom_redirections_redirections_', 'custom_redirections_']);
 
-        foreach($redirections as $r => $redirection) {
+        if (ArraysHelper::checkArray($redirections)) {
 
-            if ($r === 'redirection_subscribers_wp_admin' && $redirection) {
-                array_push($result, (object)['template' => '', 'target' => '/', 'condition' => 'admin_redirect']);
-            }
+            foreach($redirections as $r => $redirection) {
 
-            if ($r === '404_redirection' && $redirections['redirect_404_bool']) {
-                array_push($result, (object)['template' => '', 'target' => $redirection, 'condition' => '404_redirect']);
-            }
-
-            if ($r === 'attachements_redirection' && $redirections['redirect_attachements_bool']) {
-                array_push($result, (object)['template' => '', 'target' => $redirection, 'condition' => 'attachement_redirect']);
-            }
-
-            if ($r === 'redirections' && is_array($redirection) && count(array_filter($redirection)) > 0) {
-                foreach($redirection as $s => $sub) {
-                    array_push($result, (object)$sub);
+                if ($r === 'redirection_subscribers_wp_admin' && $redirection) {
+                    array_push($result, (object)['template' => '', 'target' => '/', 'condition' => 'admin_redirect']);
                 }
-            }   
+
+                if ($r === '404_redirection' && $redirections['redirect_404_bool']) {
+                    array_push($result, (object)['template' => '', 'target' => $redirection, 'condition' => '404_redirect']);
+                }
+
+                if ($r === 'attachements_redirection' && $redirections['redirect_attachements_bool']) {
+                    array_push($result, (object)['template' => '', 'target' => $redirection, 'condition' => 'attachement_redirect']);
+                }
+
+                if ($r === 'redirections' && is_array($redirection) && count(array_filter($redirection)) > 0) {
+                    foreach($redirection as $s => $sub) {
+                        array_push($result, (object)$sub);
+                    }
+                }   
+                
+            }
+
         }
 
         return $result;

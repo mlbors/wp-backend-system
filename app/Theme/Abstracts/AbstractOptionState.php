@@ -86,6 +86,10 @@ abstract class AbstractOptionState implements IState
     /********** GET ENTITY **********/
     /********************************/
 
+    /*
+     * @return IEntity
+     */
+
     public function getEntity(): IEntity
     {
         return $this->_entity;

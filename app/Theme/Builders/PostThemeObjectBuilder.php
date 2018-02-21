@@ -14,7 +14,9 @@ use Roots\Sage\Container;
 
 use App\Theme\Interfaces\IEntity as IEntity;
 use App\Theme\Interfaces\IThemeObject as IThemeObject;
+use App\Theme\Interfaces\IPageBuilderFactory as IPageBuilderFactory;
 use App\Theme\Abstracts\AbstractThemeObjectBuilder as AbstractThemeObjectBuilder;
+use App\Theme\Factories\PageBuilderFactory as PageBuilderFactory;
 use App\Theme\ThemeObjects\PostThemeObject as PostThemeObject;
 
 /***********************************************/
@@ -24,12 +26,38 @@ use App\Theme\ThemeObjects\PostThemeObject as PostThemeObject;
 class PostThemeObjectBuilder extends AbstractThemeObjectBuilder
 {
     /*******************************/
+    /********** ATTRIBUTS **********/
+    /*******************************/
+
+    /**
+     * @var IPageBuilderFactory $_pageBuilderFactory object that creates page builders
+     */
+
+    protected $_pageBuilderFactory;
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*******************************/
     /********** CONSTRUCT **********/
     /*******************************/
 
     public function __construct()
     {
         parent::__construct();
+        $this->_setPageBuilderFactory();
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /**********************************************/
+    /********** SET PAGE BUILDER FACTORY **********/
+    /**********************************************/
+
+    protected function _setPageBuilderFactory()
+    {
+        $this->_pageBuilderFactory = $this->_container->make(PageBuilderFactory::class);
     }
 
     /*********************************************************************************/
@@ -46,6 +74,6 @@ class PostThemeObjectBuilder extends AbstractThemeObjectBuilder
 
     protected function _createThemeObject(IEntity $entity): IThemeObject
     {
-        return $this->_container->makeWith(PostThemeObject::class, ['entity' => $entity]);
+        return $this->_container->makeWith(PostThemeObject::class, ['entity' => $entity, 'pageBuilderFactory' => $this->_pageBuilderFactory]);
     }
 }

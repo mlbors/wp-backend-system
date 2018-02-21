@@ -20,6 +20,7 @@ use App\Theme\Interfaces\IEntity as IEntity;
 use App\Theme\Interfaces\IEntityFactory as IEntityFactory;
 use App\Theme\Abstracts\AbstractContext as AbstractContext;
 use App\Theme\Helpers\ACFFieldsHelper as ACFFieldsHelper;
+use App\Theme\Helpers\ArraysHelper as ArraysHelper;
 
 /***************************************/
 /********** WP DB CPT CONTEXT **********/
@@ -53,13 +54,16 @@ class WPDBCPTContext extends AbstractContext
      * @param Array $queryArgs args for query
      * @return Array
      */
-    protected function _queryCPT($methodArgs, $queryArgs)
+    
+    protected function _queryCpt($methodArgs, $queryArgs)
     {
         $result = [];
         $cpt = ACFFieldsHelper::parseOptions($this->_requestService, 'acf-options-cpt', ['option_custom_post_types_labels_', 'option_custom_post_types_']);
 
-        foreach($cpt as $v => $value) {
-            array_push($result, (object)$value);
+        if (ArraysHelper::checkArray($cpt)) {
+            foreach($cpt as $v => $value) {
+                array_push($result, (object)$value);
+            }
         }
 
         return $result;
@@ -78,7 +82,7 @@ class WPDBCPTContext extends AbstractContext
      * @return Mixed Bool || WP Post Type || WP Error)
      */
 
-    protected function _registerCPT($methodArgs, $queryArgs)
+    protected function _registerCpt($methodArgs, $queryArgs)
     {
         if (!$this->_checkQueryArgs($queryArgs)) {
             return false;

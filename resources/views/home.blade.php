@@ -10,6 +10,16 @@
   {{ FrontPage::globals() }}
   </pre>
 
+  @php
+    global $settings;
+    $currentPost = $settings[0]['current_post']['post'];
+    $builderContent = $currentPost->getPageBuilderContent();
+  @endphp
+
+  @if (!empty($builderContent))
+    {!! html_entity_decode($builderContent) !!}
+  @endif
+
   @while(have_posts()) @php(the_post())
     @include('partials.page-header')
     @include('partials.content-page')
