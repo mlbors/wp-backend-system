@@ -88,6 +88,11 @@ class ShortcodePostState extends AbstractShortcodeState
                 'query_args' => ['args' => $args]
                 ]);
 
+            if ($this->_data['use_theme_objects']) {
+                $this->_setResult($post);
+                return $this->_result;
+            }
+
             $this->_setResult($post->getData());
             return $this->_result;
 

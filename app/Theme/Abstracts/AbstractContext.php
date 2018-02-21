@@ -276,4 +276,24 @@ abstract class AbstractContext implements IContext
 
         return true;
     }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*********************************/
+    /********** CHECK ARRAY **********/
+    /*********************************/
+
+    /**
+     * @param Object $array array to check
+     * @return Boolean
+     */
+
+    private static function _checkArray($array): bool
+    {
+        if (empty($array)|| !is_array($array) || count(array_filter($array)) === 0 || !$array) {
+            return false;
+        }
+        return true;
+    }
 }

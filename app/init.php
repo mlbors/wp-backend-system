@@ -19,15 +19,18 @@ use \App\Theme\Theme as Theme;
 /********************************/
 
 add_action('after_setup_theme', function() {
-
-    sage()->singleton('sage.theme', function() {
-        return new Theme();
-    });
-
-    $container = Container::getInstance();
-    $theme = $container->make(Theme::class);
-    $theme->init();
-    $theme->setGlobalSettings();
+    try {
+        sage()->singleton('sage.theme', function() {
+            return new Theme();
+        });
+    
+        $container = Container::getInstance();
+        $theme = $container->make(Theme::class);
+        $theme->init();
+        $theme->setGlobalSettings();
+    } catch (\Exception $e) {
+        return false;
+    }
 });
 
 /*********************************************************************************/

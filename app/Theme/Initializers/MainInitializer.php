@@ -14,6 +14,7 @@ use Roots\Sage\Container;
 
 use App\Theme\Abstracts\AbstractInitializer as AbstractInitializer;
 use App\Theme\Interfaces\ISideFacadeFactory as ISideFacadeFactory;
+use App\Theme\Helpers\PluginsHelper as PluginsHelper;
 
 /**************************************/
 /********** MAIN INITIALIZER **********/
@@ -61,6 +62,9 @@ class MainInitializer extends AbstractInitializer
 
     public function init()
     {
+        if (!PluginsHelper::checkClass('ACF')) {
+            throw new \Exception('ACF is not available.');
+        }
         $this->_sideFacade->generateSide();
     }
 

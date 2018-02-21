@@ -151,12 +151,19 @@ class ShortcodePostsState extends AbstractShortcodeState
                 ], 
                 [
                 'method' => '', 
-                'method_args' => ['method' => ''], 
+                'method_args' => ['method' => '', 'use_theme_object' => $this->_data['use_theme_objects']], 
                 'query_args' => ['args' => $args]
                 ]);
 
+            if ($this->_data['use_theme_objects']) {
+                $this->_setResult($posts);
+                return $this->_result;
+            }
+
             $this->_setResult($posts->getData());
             return $this->_result;
+
+            
 
         } catch (\Exception $e) {
             return $this->_result;

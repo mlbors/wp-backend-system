@@ -19,6 +19,7 @@ use App\Theme\Interfaces\IEntity as IEntity;
 use App\Theme\Interfaces\IEntityFactory as IEntityFactory;
 use App\Theme\Abstracts\AbstractContext as AbstractContext;
 use App\Theme\Helpers\ACFFieldsHelper as ACFFieldsHelper;
+use App\Theme\Helpers\ArraysHelper as ArraysHelper;
 
 /**********************************************/
 /********** WP DB USER ROLES CONTEXT **********/
@@ -52,13 +53,16 @@ class WPDBUserRolesContext extends AbstractContext
      * @param Array $queryArgs args for query
      * @return Array
      */
+    
     protected function _queryRole($methodArgs, $queryArgs)
     {
         $result = [];
         $roles = ACFFieldsHelper::parseOptions($this->_requestService, 'acf-options-user-roles', ['custom_user_roles_']);
 
-        foreach($roles as $v => $value) {
-            array_push($result, (object)$value);
+        if (ArraysHelper::checkArray($roles)) {
+            foreach($roles as $v => $value) {
+                array_push($result, (object)$value);
+            }
         }
 
         return $result;

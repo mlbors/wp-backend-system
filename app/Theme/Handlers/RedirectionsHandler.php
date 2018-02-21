@@ -114,6 +114,7 @@ class RedirectionsHandler extends AbstractHandler implements IApplyer
 
     protected function _getRedirections(): array
     {
+        $array = [];
         $request = $this->_requestService::buildRequest([
             'type' => 'redirection', 
             'action' => 'query'
@@ -123,7 +124,13 @@ class RedirectionsHandler extends AbstractHandler implements IApplyer
             'method_args' => [], 
             'query_args' => []
             ]);
-        return $this->handleRequest($request);
+        $result = $this->handleRequest($request);
+
+        if (!empty($result) && is_array($result)) {
+            $array = $result;
+        }
+
+        return $array;
     }
 
     /*********************************************************************************/

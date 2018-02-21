@@ -11,7 +11,10 @@
 namespace App\Theme\ThemeObjects;
 
 use App\Theme\Interfaces\IEntity as IEntity;
+use App\Theme\Interfaces\IPageBuilder as IPageBuilder;
+use App\Theme\Interfaces\IPageBuilderFactory as IPageBuilderFactory;
 use App\Theme\Abstracts\AbstractThemeObject as AbstractThemeObject;
+use App\Theme\Helpers\ArraysHelper as ArraysHelper;
 
 /***************************************/
 /********** POST THEME OBJECT **********/
@@ -20,6 +23,21 @@ use App\Theme\Abstracts\AbstractThemeObject as AbstractThemeObject;
 class PostThemeObject extends AbstractThemeObject
 {
     /*******************************/
+    /********** ATTRIBUTS **********/
+    /*******************************/
+
+    /**
+     * @var IPageBuilder $_pageBuilder page builder object
+     * @var IPageBuilderFactory $_pageBuilderFactory object that creates page builders
+     */
+
+    protected $_pageBuilder;
+    protected $_pageBuilderFactory;
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*******************************/
     /********** CONSTRUCT **********/
     /*******************************/
 
@@ -27,9 +45,103 @@ class PostThemeObject extends AbstractThemeObject
      * @param IEntity $entity entity object
      */
 
-    public function __construct(IEntity $entity)
+    public function __construct(IEntity $entity, IPageBuilderFactory $pageBuilderFactory)
     {
         parent::__construct($entity);
+        $this->_setPostValues($pageBuilderFactory);
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*************************************/
+    /********** SET POST VALUES **********/
+    /*************************************/
+
+    /**
+     * @param IPageBuilderFactory $pageBuilderFactory object that creates page builders
+     */
+
+    protected function _setPostValues(IPageBuilderFactory $pageBuilderFactory)
+    {   
+        $this->_setPageBuilderFactory($pageBuilderFactory);
+        $this->_instantiatePageBuilder();
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /**********************************************/
+    /********** SET PAGE BUILDER FACTORY **********/
+    /**********************************************/
+
+    /**
+     * @param IPageBuilderFactory $pageBuilderFactory object that creates page builders
+     */
+
+    protected function _setPageBuilderFactory(IPageBuilderFactory $pageBuilderFactory)
+    {   
+        $this->_pageBuilderFactory = $pageBuilderFactory;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /**************************************/
+    /********** SET PAGE BUILDER **********/
+    /**************************************/
+
+    /**
+     * @param IPageBuilder $pageBuilder page builder object
+     */
+
+    protected function _setPageBuilder(IPageBuilder $pageBuilder)
+    {   
+        $this->_pageBuilder = $pageBuilder;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /**********************************************/
+    /********** GET PAGE BUILDER FACTORY **********/
+    /**********************************************/
+
+    /**
+     * @return IPageBuilderFactory
+     */
+
+    public function getPageBuilderFactory(): IPageBuilderFactory
+    {   
+        return $this->_pageBuilderFactory;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /**************************************/
+    /********** GET PAGE BUILDER **********/
+    /**************************************/
+
+    /**
+     * @return IPageBuilder
+     */
+
+    public function getPageBuilder(): IPageBuilder
+    {   
+        return $this->_pageBuilder;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*************************************************/
+    /********** INSTANTIATE PAGE BUILDER **********/
+    /*************************************************/
+
+    protected function _instantiatePageBuilder()
+    {
+        $this->_setPageBuilder($this->_pageBuilderFactory->create());
     }
 
     /*********************************************************************************/
@@ -308,5 +420,32 @@ class PostThemeObject extends AbstractThemeObject
         }
 
         return $output;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /**********************************************/
+    /********** GET PAGE BUILDER CONTENT **********/
+    /**********************************************/
+
+    /**
+     * @return Mixed String || False
+     */
+
+    public function getPageBuilderContent()
+    {
+        if (!$this->getAcfField('page_builder_enable')) {
+            return false;
+        }
+
+        $rows = $this->getAcfField('page_builder_rows');
+
+        if (!ArraysHelper::checkArray($rows)) {
+            return false;
+        }
+
+        $this->_pageBuilder->setRows($rows);
+        return $this->_pageBuilder->build();
     }
 }

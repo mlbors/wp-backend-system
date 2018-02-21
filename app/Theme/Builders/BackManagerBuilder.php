@@ -24,6 +24,7 @@ use App\Theme\Factories\TaxonomiesHandlerFactory as TaxonomiesHandlerFactory;
 use App\Theme\Factories\UsersHandlerFactory as UsersHandlerFactory;
 use App\Theme\Factories\UserRolesHandlerFactory as UserRolesHandlerFactory;
 use App\Theme\Factories\BackViewControllerFactory as BackViewControllerFactory;
+use App\Theme\Factories\WidgetsHandlerFactory as WidgetsHandlerFactory;
 use App\Theme\Managers\BackManager as BackManager;
 
 /******************************************/
@@ -71,7 +72,8 @@ class BackManagerBuilder extends AbstractManagerBuilder
             $this->_container->make(CTHandlerFactory::class),
             $this->_container->make(UsersHandlerFactory::class),
             $this->_container->make(UserRolesHandlerFactory::class),
-            $this->_container->make(OptionsHandlerFactory::class)
+            $this->_container->make(OptionsHandlerFactory::class),
+            $this->_container->make(WidgetsHandlerFactory::class)
         ];
     }
 

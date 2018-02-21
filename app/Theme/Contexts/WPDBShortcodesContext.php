@@ -19,6 +19,7 @@ use App\Theme\Interfaces\IEntity as IEntity;
 use App\Theme\Interfaces\IEntityFactory as IEntityFactory;
 use App\Theme\Abstracts\AbstractContext as AbstractContext;
 use App\Theme\Helpers\ACFFieldsHelper as ACFFieldsHelper;
+use App\Theme\Helpers\ArraysHelper as ArraysHelper;
 
 /**********************************************/
 /********** WP DB SHORTCODES CONTEXT **********/
@@ -58,8 +59,10 @@ class WPDBShortcodesContext extends AbstractContext
         $result = [];
         $shortcodes = ACFFieldsHelper::parseOptions($this->_requestService, 'acf-options-shortcodes', ['custom_shortcodes_post_lists_', 'custom_shortcodes_display_post_', 'custom_shortcodes_display_text_', 'custom_shortcodes_display_view_', 'custom_shortcodes_display_image_', 'custom_shortcodes_display_gallery_', 'custom_shortcodes_', 'custom_shotcodes_']);
         
-        foreach($shortcodes as $s => $shortcode) {
-            array_push($result, (object)$shortcode);
+        if (ArraysHelper::checkArray($shortcodes)) {
+            foreach($shortcodes as $s => $shortcode) {
+                array_push($result, (object)$shortcode);
+            }
         }
 
         return $result;

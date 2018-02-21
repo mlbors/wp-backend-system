@@ -12,7 +12,7 @@ namespace App\Theme\Handlers;
 
 use Roots\Sage\Container;
 
-use App\Theme\Interfaces\IApplyer as IApplyer;
+use App\Theme\Interfaces\IGetter as IGetter;
 use App\Theme\Interfaces\IRepositoryBuilder as IRepositoryBuilder;
 use App\Theme\Interfaces\IRequestService as IRequestService;
 use App\Theme\Interfaces\IRequest as IRequest;
@@ -104,9 +104,9 @@ class VisualSettingsHandler extends AbstractHandler
     /*********************************************************************************/
     /*********************************************************************************/
 
-    /*********************************/
-    /********** GET OPTIONS **********/
-    /*********************************/
+    /*****************************************/
+    /********** GET VISUAL SETTINGS **********/
+    /*****************************************/
 
     /**
      * @return Array
@@ -114,6 +114,7 @@ class VisualSettingsHandler extends AbstractHandler
 
     protected function _getVisualSettings(): array
     {
+        $array = [];
         $request = $this->_requestService::buildRequest([
             'type' => 'visual', 
             'action' => 'query'
@@ -123,6 +124,12 @@ class VisualSettingsHandler extends AbstractHandler
             'method_args' => [], 
             'query_args' => []
             ]);
-        return $this->handleRequest($request);
+        $result = $this->handleRequest($request);
+
+        if (!empty($result) && is_array($result)) {
+            $array = $result;
+        }
+
+        return $array;
     }
 }

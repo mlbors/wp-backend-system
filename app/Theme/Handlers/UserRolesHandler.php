@@ -114,6 +114,7 @@ class UserRolesHandler extends AbstractHandler implements IRegister
 
     protected function _getUserRoles(): array
     {
+        $array = [];
         $request = $this->_requestService::buildRequest([
             'type' => 'role', 
             'action' => 'query'
@@ -123,7 +124,13 @@ class UserRolesHandler extends AbstractHandler implements IRegister
             'method_args' => [], 
             'query_args' => []
             ]);
-        return $this->handleRequest($request);
+        $result = $this->handleRequest($request);
+
+        if (!empty($result) && is_array($result)) {
+            $array = $result;
+        }
+
+        return $array;
     }
 
     /*********************************************************************************/

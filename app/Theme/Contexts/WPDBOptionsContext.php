@@ -19,6 +19,7 @@ use App\Theme\Interfaces\IEntity as IEntity;
 use App\Theme\Interfaces\IEntityFactory as IEntityFactory;
 use App\Theme\Abstracts\AbstractContext as AbstractContext;
 use App\Theme\Helpers\ACFFieldsHelper as ACFFieldsHelper;
+use App\Theme\Helpers\ArraysHelper as ArraysHelper;
 
 /*******************************************/
 /********** WP DB OPTIONS CONTEXT **********/
@@ -58,16 +59,22 @@ class WPDBOptionsContext extends AbstractContext
         $result = [];
         $options = ACFFieldsHelper::parseOptions($this->_requestService, 'acf-options-options', ['custom_options_add_mimes_','custom_options_add_image_sizes_','custom_options_options_', 'custom_options_']);
         
-        foreach($options as $o => $option) {
+        if (ArraysHelper::checkArray($options)) {
 
-            if ($o === 'hide_menus_to_users' && $options['hide_menus_to_users_bool'] && !empty($option)) {
-                array_push($result, (object)['type' => $o, 'value' => $option]);
-            } elseif ($o === 'hide_options_to_users' && $options['hide_options_to_users_bool'] && !empty($option)) {
-                array_push($result, (object)['type' => $o, 'value' => $option]);
-            } elseif ($option && $o !== 'hide_menus_to_users_bool' && $o !== 'hide_options_to_users_bool') {
-                array_push($result, (object)['type' => $o, 'value' => $option]);
+            foreach($options as $o => $option) {
+
+                if ($o === 'hide_menus_to_users' && $options['hide_menus_to_users_bool'] && !empty($option)) {
+                    array_push($result, (object)['type' => $o, 'value' => $option]);
+                } elseif ($o === 'hide_options_to_users' && $options['hide_options_to_users_bool'] && !empty($option)) {
+                    array_push($result, (object)['type' => $o, 'value' => $option]);
+                } elseif ($option && $o !== 'hide_menus_to_users_bool' && $o !== 'hide_options_to_users_bool') {
+                    array_push($result, (object)['type' => $o, 'value' => $option]);
+                }
+
             }
+            
         }
+
         return $result;
     }
 

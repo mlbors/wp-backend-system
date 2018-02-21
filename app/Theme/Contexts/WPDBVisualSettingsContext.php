@@ -19,6 +19,7 @@ use App\Theme\Interfaces\IEntity as IEntity;
 use App\Theme\Interfaces\IEntityFactory as IEntityFactory;
 use App\Theme\Abstracts\AbstractContext as AbstractContext;
 use App\Theme\Helpers\ACFFieldsHelper as ACFFieldsHelper;
+use App\Theme\Helpers\ArraysHelper as ArraysHelper;
 
 /***************************************************/
 /********** WP DB VISUAL SETTINGS CONTEXT **********/
@@ -58,11 +59,14 @@ class WPDBVisualSettingsContext extends AbstractContext
         $result = [];
         $settings = ACFFieldsHelper::parseOptions($this->_requestService, 'acf-options-visual-settings', ['custom_visual_settings_']);
 
-        foreach($settings as $s => $setting) {
-            if (!empty($setting)) {
-                array_push($result, (object)['type' => $s, 'value' => $setting]);
+        if (ArraysHelper::checkArray($settings)) {
+            foreach($settings as $s => $setting) {
+                if (!empty($setting)) {
+                    array_push($result, (object)['type' => $s, 'value' => $setting]);
+                }
             }
         }
+
         return $result;
     }
 }
