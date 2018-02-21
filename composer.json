@@ -1,27 +1,20 @@
 {
-  "name": "roots/sage",
+  "name": "wp-system",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "WordPress starter theme with a modern development workflow",
-  "homepage": "https://roots.io/sage/",
+  "description": "A WordPress admin system built with Sage and ACF Pro.",
+  "homepage": "https://github.com/mlbors/wp-system/",
   "authors": [
     {
-      "name": "Ben Word",
-      "email": "ben@benword.com",
-      "homepage": "https://github.com/retlehs"
-    },
-    {
-      "name": "Scott Walkinshaw",
-      "email": "scott.walkinshaw@gmail.com",
-      "homepage": "https://github.com/swalkinshaw"
+      "name": "Mátyás Lancelot Bors",
+      "homepage": "https://github.com/mlbors"
     }
   ],
   "keywords": [
     "wordpress"
   ],
   "support": {
-    "issues": "https://github.com/roots/sage/issues",
-    "forum": "https://discourse.roots.io/"
+    "issues": "https://github.com/mlbors/wp-system/issues"
   },
   "autoload": {
     "psr-4": {
