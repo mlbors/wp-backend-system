@@ -243,7 +243,7 @@
                             },
                             "choices": {
                                 "none": "None",
-                                "image_link": "Link to the image",
+                                "image-link": "Link to the image",
                                 "link": "Link",
                                 "lightbox": "Lightbox"
                             },
@@ -253,6 +253,35 @@
                             "ui": 0,
                             "ajax": 0,
                             "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_5a8e730d85b32",
+                            "label": "Link",
+                            "name": "page_builder_rows_cols_col_image_link",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5a8ae1af1d519",
+                                        "operator": "==",
+                                        "value": "image"
+                                    },
+                                    {
+                                        "field": "field_5a8aee978ed53",
+                                        "operator": "==",
+                                        "value": "link"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
                             "placeholder": ""
                         },
                         {
@@ -272,7 +301,7 @@
                                     {
                                         "field": "field_5a8aee978ed53",
                                         "operator": "==",
-                                        "value": "image_link"
+                                        "value": "image-link"
                                     }
                                 ],
                                 [
@@ -363,7 +392,7 @@
                             },
                             "choices": {
                                 "none": "None",
-                                "image_link": "Link to the image",
+                                "image-link": "Link to the image",
                                 "lightbox": "Lightbox"
                             },
                             "default_value": [],
@@ -415,11 +444,105 @@
                             "placeholder": ""
                         },
                         {
+                            "key": "field_5a8e88d5b1df6",
+                            "label": "Number of items per row",
+                            "name": "page_builder_rows_cols_col_items_per_row",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5a8ae1af1d519",
+                                        "operator": "==",
+                                        "value": "gallery"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "1": "1",
+                                "2": "2",
+                                "3": "3",
+                                "4": "4",
+                                "5": "5",
+                                "6": "6",
+                                "7": "7",
+                                "8": "8",
+                                "9": "9",
+                                "10": "10",
+                                "11": "11",
+                                "12": "12"
+                            },
+                            "default_value": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_5a8ae76a7bdc0",
-                            "label": "Content",
+                            "label": "URL",
                             "name": "page_builder_rows_cols_col_button",
-                            "type": "text",
+                            "type": "url",
                             "instructions": "Just put the URL.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5a8ae1af1d519",
+                                        "operator": "==",
+                                        "value": "button"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_5a8e84f636d21",
+                            "label": "Content",
+                            "name": "page_builder_rows_cols_col_button_content",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5a8ae1af1d519",
+                                        "operator": "==",
+                                        "value": "button"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5a8e861d2c797",
+                            "label": "Title",
+                            "name": "page_builder_rows_cols_col_button_title",
+                            "type": "text",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -478,10 +601,61 @@
                         },
                         {
                             "key": "field_5a8ae77f7bdc1",
-                            "label": "Content",
+                            "label": "URL",
                             "name": "page_builder_rows_cols_col_link",
-                            "type": "text",
+                            "type": "url",
                             "instructions": "Just put the URL.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5a8ae1af1d519",
+                                        "operator": "==",
+                                        "value": "link"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_5a8e843015f74",
+                            "label": "Content",
+                            "name": "page_builder_rows_cols_col_link_content",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5a8ae1af1d519",
+                                        "operator": "==",
+                                        "value": "link"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5a8e841f15f73",
+                            "label": "Title",
+                            "name": "page_builder_rows_cols_col_link_title",
+                            "type": "text",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": [
                                 [
@@ -742,5 +916,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1519226843
+    "modified": 1519293244
 }

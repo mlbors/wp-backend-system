@@ -1,6 +1,6 @@
 <?php
 /**
- * WP System - RichTextView - Concrete Class
+ * WP System - GalleryView - Concrete Class
  *
  * @since       12.01.2018
  * @version     1.0.0.0
@@ -14,11 +14,11 @@ use Roots\Sage\Container;
 
 use App\Theme\Abstracts\AbstractView as AbstractView;
 
-/************************************/
-/********** RICH TEXT VIEW **********/
-/************************************/
+/**********************************/
+/********** GALLERY VIEW **********/
+/**********************************/
 
-class RichTextView extends AbstractView
+class GalleryView extends AbstractView
 {
     /*******************************/
     /********** CONSTRUCT **********/
@@ -47,7 +47,28 @@ class RichTextView extends AbstractView
     public function setData($data)
     {
         $altData = $data;
-        $altData['content'] = $data['content']['page_builder_rows_cols_col_rich_text'];
+        $altData['content'] = [];
+        $altData['images'] = [];
+
+        $cpt = 0;
+
+        foreach($data['content']['page_builder_rows_cols_col_gallery'] as $i => $image) {
+            $altData['images'][$cpt]['thumbnail'] = $image['sizes']['thumbnail'];
+            $altData['images'][$cpt]['url'] = $image['url'];
+            $altData['images'][$cpt]['description'] = $image['description'];
+            $altData['images'][$cpt]['caption'] = $image['caption'];
+            $altData['images'][$cpt]['name'] = $image['alt'];
+
+            $cpt++;
+        }
+
+        $altData['action'] = $data['content']['page_builder_rows_cols_col_gallery_action'];
+        $altData['target'] = !empty($data['content']['page_builder_rows_cols_col_gallery_action']) ? $data['content']['page_builder_rows_cols_col_gallery_target'] : '';
+        $altData['items_per_row'] = $data['content']['page_builder_rows_cols_col_items_per_row'];
+        $altData['col_size'] = 12/$altData['items_per_row'];
+
+        print_r($altData);
+
         parent::setData($altData);
     }
 
@@ -60,20 +81,6 @@ class RichTextView extends AbstractView
 
     public function render()
     {
-        $this->_preprocessData();
         return $this->_renderView();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /*************************************/
-    /********** PREPROCESS DATA **********/
-    /*************************************/
-
-    protected function _preprocessData()
-    {
-        $content = do_shortcode($this->_data['content']);
-        $this->_data['content'] = $content;
     }
 }

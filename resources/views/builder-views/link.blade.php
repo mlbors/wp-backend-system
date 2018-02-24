@@ -1,0 +1,1 @@
+<a href="{{ $data['url'] }}" target="{{ $data['target'] }}" title="{{ $data['title'] }}">{{ $data['content'] }}</a>

@@ -112,6 +112,35 @@ final class FilesHelper
     /*********************************************************************************/
     /*********************************************************************************/
 
+    /*********************************/
+    /********** CREATE FILE **********/
+    /*********************************/
+
+    /**
+     * @param String $filename file's name
+     * @param Mixed $directory place to check
+     * @param String $content file content
+     * @return Mixed
+     */
+
+    public static function createFile(string $filename, string $directory, string $content)
+    {
+        if (empty($content)) {
+            return false;
+        }
+
+        $path = __DIR__ . '/../' . $directory . '/' . $filename;
+
+        if (self::_checkFile($filename, $directory)) {
+            unlink($path);
+        }
+
+        return file_put_contents($path, $content);
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
     /********************************/
     /********** CHECK FILE **********/
     /********************************/

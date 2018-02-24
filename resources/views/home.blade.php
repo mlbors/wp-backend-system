@@ -14,6 +14,7 @@
     global $settings;
     $currentPost = $settings[0]['current_post']['post'];
     $builderContent = $currentPost->getPageBuilderContent();
+    echo $currentPost->getMetaTags();
   @endphp
 
   @if (!empty($builderContent))

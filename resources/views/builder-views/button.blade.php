@@ -1,0 +1,1 @@
+<a class="btn" href="{{ $data['url'] }}" target="{{ $data['target'] }}" title="{{ $data['title'] }}" role="button">{{ $data['content'] }}</a>

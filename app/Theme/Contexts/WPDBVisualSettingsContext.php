@@ -61,9 +61,7 @@ class WPDBVisualSettingsContext extends AbstractContext
 
         if (ArraysHelper::checkArray($settings)) {
             foreach($settings as $s => $setting) {
-                if (!empty($setting)) {
-                    array_push($result, (object)['type' => $s, 'value' => $setting]);
-                }
+                array_push($result, (object)['type' => $s, 'value' => $setting]);
             }
         }
 

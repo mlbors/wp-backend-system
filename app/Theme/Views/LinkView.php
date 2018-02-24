@@ -1,6 +1,6 @@
 <?php
 /**
- * WP System - RichTextView - Concrete Class
+ * WP System - LinkView - Concrete Class
  *
  * @since       12.01.2018
  * @version     1.0.0.0
@@ -14,11 +14,11 @@ use Roots\Sage\Container;
 
 use App\Theme\Abstracts\AbstractView as AbstractView;
 
-/************************************/
-/********** RICH TEXT VIEW **********/
-/************************************/
+/*******************************/
+/********** LINK VIEW **********/
+/*******************************/
 
-class RichTextView extends AbstractView
+class LinkView extends AbstractView
 {
     /*******************************/
     /********** CONSTRUCT **********/
@@ -47,7 +47,10 @@ class RichTextView extends AbstractView
     public function setData($data)
     {
         $altData = $data;
-        $altData['content'] = $data['content']['page_builder_rows_cols_col_rich_text'];
+        $altData['url'] = $data['content']['page_builder_rows_cols_col_link'];
+        $altData['content'] = $data['content']['page_builder_rows_cols_col_link_content'];
+        $altData['target'] = $data['content']['page_builder_rows_cols_col_link_target'];
+        $altData['title'] = $data['content']['page_builder_rows_cols_col_link_title'];
         parent::setData($altData);
     }
 
@@ -60,20 +63,6 @@ class RichTextView extends AbstractView
 
     public function render()
     {
-        $this->_preprocessData();
         return $this->_renderView();
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /*************************************/
-    /********** PREPROCESS DATA **********/
-    /*************************************/
-
-    protected function _preprocessData()
-    {
-        $content = do_shortcode($this->_data['content']);
-        $this->_data['content'] = $content;
     }
 }
