@@ -18,5 +18,7 @@ namespace App\Theme\Interfaces;
 
 interface IGenerator
 {
+    public function setData($data);
+    public function getData();
     public function generate();
 }

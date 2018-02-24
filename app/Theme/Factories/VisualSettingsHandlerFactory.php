@@ -12,11 +12,13 @@ namespace App\Theme\Factories;
 
 use Roots\Sage\Container;
 
+use App\Theme\Interfaces\IGeneratorFactory as IGeneratorFactory;
 use App\Theme\Interfaces\IHandler as IHandler;
 use App\Theme\Interfaces\IRepositoryBuilder as IRepositoryBuilder;
 use App\Theme\Interfaces\IRequestService as IRequestService;
 use App\Theme\Abstracts\AbstractHandlerFactory as AbstractHandlerFactory;
 use App\Theme\Builders\VisualSettingsRepositoryBuilder as VisualSettingsRepositoryBuilder;
+use App\Theme\Factories\CSSGeneratorFactory as CSSGeneratorFactory;
 use App\Theme\Handlers\VisualSettingsHandler as VisualSettingsHandler;
 
 /*****************************************************/
@@ -26,12 +28,38 @@ use App\Theme\Handlers\VisualSettingsHandler as VisualSettingsHandler;
 class VisualSettingsHandlerFactory extends AbstractHandlerFactory
 {
     /*******************************/
+    /********** ATTRIBUTS **********/
+    /*******************************/
+
+    /**
+     * @var IGeneratorFactory $_cssGeneratorFactory object that creates CSS Generator
+     */
+
+    protected $_cssGeneratorFactory;
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*******************************/
     /********** CONSTRUCT **********/
     /*******************************/
 
     public function __construct()
     {
         parent::__construct();
+        $this->_setCSSGeneratorFactory();
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /************************************************/
+    /********** SET CSS GENERRATOR FACTORY **********/
+    /************************************************/
+
+    protected function _setCSSGeneratorFactory()
+    {
+        $this->_cssGeneratorFactory = $this->_container->make(CSSGeneratorFactory::class);
     }
 
     /*********************************************************************************/
@@ -60,6 +88,6 @@ class VisualSettingsHandlerFactory extends AbstractHandlerFactory
 
     protected function _createHandler($requestService): IHandler
     {
-        return $this->_container->makeWith(VisualSettingsHandler::class, ['repositoryBuilder' => $this->_repositoryBuilder, 'requestService' => $requestService]);
+        return $this->_container->makeWith(VisualSettingsHandler::class, ['repositoryBuilder' => $this->_repositoryBuilder, 'requestService' => $requestService, 'cssGeneratorFactory' => $this->_cssGeneratorFactory]);
     }
 }

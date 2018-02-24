@@ -1,6 +1,6 @@
 <?php
 /**
- * WP System - PageBuilder - Abstract Class
+ * WP System - PageBuilder - Concrete Class
  *
  * @since       12.01.2018
  * @version     1.0.0.0
@@ -145,7 +145,7 @@ class PageBuilder extends AbstractPageBuilder
     {
         $type = $col['page_builder_rows_cols_col_type'];
         $data = [];
-        $data['content'] = $col['page_builder_rows_cols_col_text'];
+        $data['content'] = $col;
         $this->_viewController->initView($type, $data);
         return $this->_viewController->display();
     }

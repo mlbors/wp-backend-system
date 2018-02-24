@@ -425,6 +425,55 @@ class PostThemeObject extends AbstractThemeObject
     /*********************************************************************************/
     /*********************************************************************************/
 
+    /***********************************/
+    /********** GET META TAGS **********/
+    /***********************************/
+
+    /**
+     * @return String 
+     */
+
+    public function getMetaTags(): string
+    {
+        $acfMetaTagTitle = $this->getAcfField('post_meta_tag_title');
+        $acfMetaTagDescription = $this->getAcfField('post_meta_tag_description');
+        $acfMetaTagKeywords = $this->getAcfField('post_meta_tag_keywords');
+        $acfMetaTagAuthor = $this->getAcfField('post_meta_tag_author');
+        $acfMetaTagImage = $this->getAcfField('post_meta_tag_image');
+
+        $wpCoverImage = wp_get_attachment_image_src($this->getCoverImgID() , 'large', true);
+        $wpCoverImage = ArraysHelper::checkArray($wpCoverImage) ? $wpCoverImage[0] : '';
+
+        $title = !empty($acfMetaTagTitle) ? $acfMetaTagTitle : get_the_title((int)$this->_entity->ID);
+        $description = !empty($acfMetaTagDescription) ? $acfMetaTagDescription : $this->getExcerpt();
+        $keywords = !empty($acfMetaTagKeywords) ? $acfMetaTagKeywords : '';
+        $author = !empty($acfMetaTagAuthor) ? $acfMetaTagAuthor : get_the_author_meta('user_nicename', (int)$this->_entity->post_author);
+        $permalink = get_the_permalink((int)$this->_entity->ID);
+        $image = ArraysHelper::checkArray($acfMetaTagImage) ? $acfMetaTagImage['sizes']['large'] : $wpCoverImage;
+        $date = $this->_entity->post_date;
+        $modified = $this->_entity->post_modified;
+        $siteName = get_bloginfo('name');
+
+        $data = [
+            'title' => $title,
+            'description' => $description,
+            'keywords' => $keywords,
+            'author' => $author,
+            'permalink' => $permalink,
+            'image' => $image,
+            'date' => $date,
+            'modified' => $modified,
+            'site_name' => $siteName
+        ];
+
+        $viewController = $this->_pageBuilder->getViewController();
+        $viewController->initView('meta', $data);
+        return $viewController->display();
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
     /**********************************************/
     /********** GET PAGE BUILDER CONTENT **********/
     /**********************************************/

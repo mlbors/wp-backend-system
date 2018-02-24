@@ -14,7 +14,12 @@ use Roots\Sage\Container;
 
 use App\Theme\Interfaces\IView as IView;
 use App\Theme\Abstracts\AbstractViewFactory as AbstractViewFactory;
+use App\Theme\Views\ButtonView as ButtonView;
 use App\Theme\Views\ColView as ColView;
+use App\Theme\Views\GalleryView as GalleryView;
+use App\Theme\Views\ImageView as ImageView;
+use App\Theme\Views\LinkView as LinkView;
+use App\Theme\Views\MetaView as MetaView;
 use App\Theme\Views\RichTextView as RichTextView;
 use App\Theme\Views\RowView as RowView;
 use App\Theme\Views\SectionView as SectionView;
@@ -74,20 +79,35 @@ class PageBuilderViewFactory extends AbstractViewFactory
     protected function _createView(): IView
     {
         switch($this->_type) {
+            case 'button':
+                return $this->_container->makeWith(ButtonView::class, ['file' => 'button']);
+                break;
             case 'col':
                 return $this->_container->makeWith(ColView::class, ['file' => 'col']);
                 break;
+            case 'gallery':
+                return $this->_container->makeWith(GalleryView::class, ['file' => 'gallery']);
+                break;
+            case 'image':
+                return $this->_container->makeWith(ImageView::class, ['file' => 'image']);
+                break;
+            case 'link':
+                return $this->_container->makeWith(LinkView::class, ['file' => 'link']);
+                break;
+            case 'meta':
+                return $this->_container->makeWith(MetaView::class, ['file' => 'meta']);
+                break;
             case 'row':
                 return $this->_container->makeWith(RowView::class, ['file' => 'row']);
+                break;
+            case 'rich_text':
+                return $this->_container->makeWith(RichTextView::class, ['file' => 'rich-text']);
                 break;
             case 'section':
                 return $this->_container->makeWith(SectionView::class, ['file' => 'section']);
                 break;
             case 'text':
                 return $this->_container->makeWith(TextView::class, ['file' => 'text']);
-                break;
-            case 'rich_text':
-                return $this->_container->makeWith(RichTextView::class, ['file' => 'rich-text']);
                 break;
             default:
                 return $this->_container->makeWith(TextView::class, ['file' => 'text']);

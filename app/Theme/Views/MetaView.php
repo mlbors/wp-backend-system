@@ -1,6 +1,6 @@
 <?php
 /**
- * WP System - TextView - Concrete Class
+ * WP System - MetaView - Concrete Class
  *
  * @since       12.01.2018
  * @version     1.0.0.0
@@ -15,10 +15,10 @@ use Roots\Sage\Container;
 use App\Theme\Abstracts\AbstractView as AbstractView;
 
 /*******************************/
-/********** TEXT VIEW **********/
+/********** META VIEW **********/
 /*******************************/
 
-class TextView extends AbstractView
+class MetaView extends AbstractView
 {
     /*******************************/
     /********** CONSTRUCT **********/
@@ -31,24 +31,6 @@ class TextView extends AbstractView
     public function __construct(string $file)
     {
         parent::__construct($file);
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /******************************/
-    /********** SET DATA **********/
-    /******************************/
-
-    /**
-     * @param Mixed $data view's data
-     */
-
-    public function setData($data)
-    {
-        $altData = $data;
-        $altData['content'] = $data['content']['page_builder_rows_cols_col_text'];
-        parent::setData($altData);
     }
 
     /*********************************************************************************/
