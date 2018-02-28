@@ -31,7 +31,7 @@
 
       </div>
 
-    @if ($cell === $data['items_per_row'] || $nbImages === count($data['images'])-1)
+    @if ($cell === $data['items_per_row'] || $nbImages === count($data['images']) - 1)
       </div>
       @php
         $cell = 1;

@@ -1,11 +1,24 @@
-<pre>::: SHORTCODE ::: post theme object</pre>
+<div class="single-post-theme-object-shortcode">
+  <article class="h-entry" itemscope itemtype="http://schema.org/Article">
 
-<pre>
-@php
+    @php
+      $img = $data->getCoverImgUrl();
+      $title = $data->getTitle();
+      $date = $data->getDate();
+      $content = $data->getContent();
+    @endphp
 
-print_r($data);
+    @if ($img)
+      <div class="post-image">
+          <img class="u-photo" itemprop="image" src="{{ $img }}" />
+      </div>
+    @endif
+    
+    <h2 class="post-title p-name" itemprop="name">{{ $title }}</h2>
+    <time class="post-date dt-published" datetime="{{ $date }}" itemprop="dateCreated">{{ $date }}</time>
+    <div class="post-content e-entry" itemprop="text">
+        {{ $content }}
+    </div>
 
-echo $data->getExcerpt();
-
-@endphp
-</pre>
+  </article>
+</div>

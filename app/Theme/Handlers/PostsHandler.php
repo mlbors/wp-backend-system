@@ -46,37 +46,7 @@ class PostsHandler extends AbstractHandler
 
     public function init()
     {
-        /*$this->_requestService::buildRequestAndExecute([
-                                                        'type' => 'post', 
-                                                        'action' => 'query'
-                                                        ], 
-                                                        [
-                                                        'method' => '', 
-                                                        'method_args' => ['method' => 'get'], 
-                                                        'query_args' => ['args' => []]
-                                                        ]);
 
-        $this->_requestService::buildRequestAndExecute([
-                                                        'type' => 'post', 
-                                                        'action' => 'query'
-                                                        ], 
-                                                        [
-                                                        'method' => 'ByID', 
-                                                        'method_args' => [], 
-                                                        'query_args' => ['ID' => 5]
-                                                        ]);
-
-        /*$postData = ACFFieldsHelper::parseOptions($this->_requestService, 'acf-options-cpt', 'option_custom_post_types_');
-        echo '<pre>';
-        echo 'post data cpt<br />';
-        print_r($postData);
-        echo '</pre>';
-
-        $postData = ACFFieldsHelper::parseOptions($this->_requestService, 'acf-options-redirections', 'custom_redirections_redirections_');
-        echo '<pre>';
-        echo 'post data redirections<br />';
-        print_r($postData);
-        echo '</pre>';*/
     }
 
     /*********************************************************************************/

@@ -1,7 +1,1 @@
-<pre>::: SHORTCODE ::: image</pre>
-
-<pre>
-@php
-print_r($data); 
-@endphp
-</pre>
+<img class="image-shortcode" src="{{ $data['image_data']['full_path'] }}" />

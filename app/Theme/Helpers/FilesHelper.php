@@ -112,6 +112,34 @@ final class FilesHelper
     /*********************************************************************************/
     /*********************************************************************************/
 
+    /*********************************************/
+    /********** CREATE FILE USING CACHE **********/
+    /*********************************************/
+
+    /**
+     * @param String $filename file's name
+     * @param Mixed $directory place to check
+     * @param String $content file content
+     * @param Int $minutes
+     * @return Mixed
+     */
+
+    public static function createFileUsingCache(string $filename, string $directory, string $content, int $minutes)
+    {
+        $file = '';
+        if (self::_checkFile($filename, $directory)) {
+            $file = self:: _checkFileLiftime($filename, $directory, $minutes);
+            if ($file) {
+                return $file;
+            }
+        }
+
+        return self::createFile($filename, $directory, $content);
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
     /*********************************/
     /********** CREATE FILE **********/
     /*********************************/
@@ -153,8 +181,31 @@ final class FilesHelper
 
     private static function _checkFile(string $filename, string $directory)
     {
-        if (file_exists(__DIR__ . '/../' . $directory . '/' . $filename . '.php')) {
-            return __DIR__ . '/../' . $directory . '/' . $filename . '.php';
+        if (file_exists(__DIR__ . '/../' . $directory . '/' . $filename)) {
+            return __DIR__ . '/../' . $directory . '/' . $filename;
+        }
+        return false;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /****************************************/
+    /********** CHECK FILE LIFTIME **********/
+    /****************************************/
+
+    /**
+     * @param String $filename file's name
+     * @param Mixed $directory place to check
+     * @param Int $minutes
+     * @return Mixed String || Bool
+     */
+
+    private static function _checkFileLiftime(string $filename, string $directory, int $minutes)
+    {
+        $file = __DIR__ . '/../' . $directory . '/' . $filename;
+        if (filemtime($file) > (time() - 60 * 5 )) {
+            return file_get_contents($file);
         }
         return false;
     }

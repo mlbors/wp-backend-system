@@ -1,7 +1,1 @@
-<pre>::: SHORTCODE ::: specific</pre>
-
-<pre>
-@php
-print_r($data); 
-@endphp
-</pre>
+<div class="specific-view-shortcode"><p>This is a specific view.</p></div>

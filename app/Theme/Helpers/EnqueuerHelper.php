@@ -43,8 +43,10 @@ final class EnqueuerHelper
 
     public static function enqueueStyle(string $handle, string $src = '', array $deps = [], $ver = false, string $media = 'all')
     {
-        wp_register_style($handle, $src, $deps, $ver, $media);
-        wp_enqueue_style($handle, $src, $deps, $ver, $media);
+        add_action('wp_enqueue_scripts', function() use ($handle, $src, $deps, $ver, $media) {
+            wp_register_style($handle, $src, $deps, $ver, $media);
+            wp_enqueue_style($handle, $src, $deps, $ver, $media);
+        });
     }
 
     /*********************************************************************************/
@@ -64,7 +66,9 @@ final class EnqueuerHelper
 
     public static function enqueueScript(string $handle, string $src = '', array $deps = [], $ver = false, bool $inFooter = false)
     {
-        wp_register_script($handle, $src, $deps, $ver, $inFooter);
-        wp_enqueue_script($handle, $src, $deps, $ver, $inFooter);
+        add_action('wp_enqueue_scripts', function() use ($handle, $src, $deps, $ver, $inFooter) {
+            wp_register_script($handle, $src, $deps, $ver, $inFooter);
+            wp_enqueue_script($handle, $src, $deps, $ver, $inFooter);
+        });
     }
 }

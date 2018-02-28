@@ -135,13 +135,206 @@ class PostThemeObject extends AbstractThemeObject
     /*********************************************************************************/
     /*********************************************************************************/
 
-    /*************************************************/
+    /**********************************************/
     /********** INSTANTIATE PAGE BUILDER **********/
-    /*************************************************/
+    /**********************************************/
 
     protected function _instantiatePageBuilder()
     {
         $this->_setPageBuilder($this->_pageBuilderFactory->create());
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /****************************/
+    /********** GET ID **********/
+    /****************************/
+
+    /**
+     * @return Int || false 
+     */
+
+    public function getID()
+    {
+        if (empty((int)$this->_entity->ID)) {
+            return false;
+        }
+
+        return (int)$this->_entity->ID;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*******************************/
+    /********** GET TITLE **********/
+    /*******************************/
+
+    /**
+     * @return String || false 
+     */
+
+    public function getTitle()
+    {
+        if (empty((int)$this->_entity->ID)) {
+            return false;
+        }
+
+        return (string)$this->_entity->post_title;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*********************************/
+    /********** GET CONTENT **********/
+    /*********************************/
+
+    /**
+     * @return String || false 
+     */
+
+    public function getContent()
+    {
+        if (empty((int)$this->_entity->ID)) {
+            return false;
+        }
+
+        return $this->_entity->post_content;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /******************************/
+    /********** GET DATE **********/
+    /******************************/
+
+    /**
+     * @return String || false 
+     */
+
+    public function getDate()
+    {
+        if (empty((int)$this->_entity->ID)) {
+            return false;
+        }
+
+        return $this->_entity->post_date;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /***********************************/
+    /********** GET PERMALINK **********/
+    /***********************************/
+
+    /**
+     * @return String || false 
+     */
+
+    public function getPermalink()
+    {
+        if (empty((int)$this->_entity->ID)) {
+            return false;
+        }
+
+        return (string)get_the_permalink((int)$this->_entity->post_author);
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /********************************/
+    /********** GET AUTHOR **********/
+    /********************************/
+
+    /**
+     * @return String || false 
+     */
+
+    public function getAuthor()
+    {
+        if (empty((int)$this->_entity->ID)) {
+            return false;
+        }
+
+        return (string)get_the_author_meta('display_name', (int)$this->_entity->ID);
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /******************************/
+    /********** GET TYPE **********/
+    /******************************/
+
+    /**
+     * @return String || false 
+     */
+
+    public function getType()
+    {
+        if (empty((int)$this->_entity->ID)) {
+            return false;
+        }
+
+        return (string)$this->_entity->post_type;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /******************************/
+    /********** GET SLUG **********/
+    /******************************/
+
+    /**
+     * @return Mixed String || false 
+     */
+
+    public function getSlug()
+    {
+        if (empty((int)$this->_entity->ID)) {
+            return false;
+        }
+
+        return $this->_entity->post_name;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*********************************/
+    /********** GET EXCERPT **********/
+    /*********************************/
+
+    /**
+     * @param Int $length excerpt length
+     * @return Mixed String || false 
+     */
+
+    public function getExcerpt(int $length = 150)
+    {
+        if (empty((int)$this->_entity->ID)) {
+            return false;
+        }
+
+        if (!empty($this->_entity->post_excerpt)) {
+            return $excerpt = $post->post_excerpt; 
+        }
+
+        $excerpt = '';
+        $excerpt = apply_filters('the_content', $this->_entity->post_content);
+        $excerpt = wp_strip_all_tags(str_replace( ']]>', ']]&gt;', $excerpt));
+
+        if (strlen($excerpt) > $length) {
+            $$excerpt = mb_substr($excerpt, 0, $length, 'UTF-8') . ' [...]';
+        }
+
+        return $excerpt;
     }
 
     /*********************************************************************************/
@@ -235,59 +428,6 @@ class PostThemeObject extends AbstractThemeObject
     /*********************************************************************************/
     /*********************************************************************************/
 
-    /******************************/
-    /********** GET SLUG **********/
-    /******************************/
-
-    /**
-     * @return Mixed String || false 
-     */
-
-    public function getSlug()
-    {
-        if (empty((int)$this->_entity->ID)) {
-            return false;
-        }
-
-        return $this->_entity->post_name;
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
-    /*********************************/
-    /********** GET EXCERPT **********/
-    /*********************************/
-
-    /**
-     * @param Int $length excerpt length
-     * @return Mixed String || false 
-     */
-
-    public function getExcerpt(int $length = 150)
-    {
-        if (empty((int)$this->_entity->ID)) {
-            return false;
-        }
-
-        if (!empty($this->_entity->post_excerpt)) {
-            return $excerpt = $post->post_excerpt; 
-        }
-
-        $excerpt = '';
-        $excerpt = apply_filters('the_content', $this->_entity->post_content);
-        $excerpt = wp_strip_all_tags(str_replace( ']]>', ']]&gt;', $excerpt));
-
-        if (strlen($excerpt) > $length) {
-            $$excerpt = mb_substr($excerpt, 0, $length, 'UTF-8') . ' [...]';
-        }
-
-        return $excerpt;
-    }
-
-    /*********************************************************************************/
-    /*********************************************************************************/
-
     /**********************************/
     /********** GET WPML IDS **********/
     /**********************************/
@@ -356,6 +496,30 @@ class PostThemeObject extends AbstractThemeObject
 
         if (has_post_thumbnail((int)$this->_entity->ID)) {
             return get_post_thumbnail_id((int)$this->_entity->ID);
+        }
+
+        return false;
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*****************************************/
+    /********** GET COVER IMAGE URL **********/
+    /*****************************************/
+
+    /**
+     * @param String $size image size
+     * @return Mixed Int || false
+     */
+
+    public function getCoverImgUrl($size = 'medium')
+    {
+        $id = $this->getCoverImgID();
+        $img = wp_get_attachment_image_src($id);
+
+        if (!empty($img) && is_array($img) && count(array_filter($img)) > 0) {
+            return $img[0];
         }
 
         return false;

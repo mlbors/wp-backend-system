@@ -14,7 +14,7 @@ use Roots\Sage\Container;
 
 use App\Theme\Abstracts\AbstractGenerator as AbstractGenerator;
 use App\Theme\Helpers\ArraysHelper as ArraysHelper;
-use App\Theme\Helpers\EnqueuerHelper as EnqueuersHelper;
+use App\Theme\Helpers\EnqueuerHelper as EnqueuerHelper;
 use App\Theme\Helpers\FilesHelper as FilesHelper;
 
 /***********************************/
@@ -79,9 +79,9 @@ class CSSGenerator extends AbstractGenerator
     protected function _setDictionary()
     {
         $this->_dictionary = [
-            'headings'      =>      'h1, h2, h3, h4, h5, h6',
-            'apseudo1'      =>      'a, a:link, a:visited',
-            'apseudo2'      =>      'a:hover, a:active, a:focus' 
+            'headings'      =>      'h1,h2,h3,h4,h5,h6',
+            'apseudo1'      =>      'a,a:link,a:visited',
+            'apseudo2'      =>      'a:hover,a:active,a:focus' 
         ];
     }
 
@@ -246,8 +246,12 @@ class CSSGenerator extends AbstractGenerator
 
     protected function _prepareValue(string $key, string $property, $value)
     {
-        if (empty($value)) {
+        if (empty($value) && !empty($this->_fallbacks[$key]) && !empty($this->_fallbacks[$key][$property])) {
             return $this->_fallbacks[$key][$property];
+        }
+
+        if (empty($value)) {
+            return false;
         }
 
         $preparedValue = trim($value);
@@ -278,7 +282,9 @@ class CSSGenerator extends AbstractGenerator
         $str = '';
 
         foreach($properties as $p => $property) {
-            $str .= $property['property'] . ':' . $property['value'] . ';';
+            if (!empty($property['property']) && !empty($property['value'])) {
+                $str .= $property['property'] . ':' . $property['value'] . ';';
+            }
         }
 
         return $str;
@@ -301,7 +307,7 @@ class CSSGenerator extends AbstractGenerator
 
         foreach($this->_values as $v => $value) {
             $str .= $value['tag'] . '{';
-            $str .= $this->_writeCssProperties($value['properties']);
+            $str .= $this->_writeProperties($value['properties']);
             $str .= '}';
         }
         
@@ -324,7 +330,7 @@ class CSSGenerator extends AbstractGenerator
 
     protected function _storeCssValue(string $key, string $tag, string $property, $value)
     {
-        if (!ArraysHelper::checkArray($this->_values[$key])) {
+        if (empty($this->_values[$key]) || !ArraysHelper::checkArray($this->_values[$key])) {
             $this->_values[$key] = [];
             $this->_values[$key]['tag'] = $tag;
             $this->_values[$key]['properties'] = [];
@@ -332,6 +338,60 @@ class CSSGenerator extends AbstractGenerator
 
         $preparedValue = $this->_prepareValue($key, $property, $value);
         array_push($this->_values[$key]['properties'], ['property' => $property, 'value' => $preparedValue]);
+    }
+
+    
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /*************************************/
+    /********** PREPARE GLOBALS **********/
+    /*************************************/
+
+    protected function _prepareGlobals()
+    {
+        foreach($this->_data as $i => $item) {
+            if (empty($item) || empty($item->type)) {
+                continue;
+            }
+            list($tag, $property) = $this->_parseKey($item->type);
+            if ($this->_checkIfGlobal($tag)) {
+                $this->_setGlobal($tag, $item->value);
+                continue;
+            }
+        }
+
+        $this->_setFallbacks();
+    }
+
+    /*********************************************************************************/
+    /*********************************************************************************/
+
+    /***********************************/
+    /********** PROCESS VALUES *********/
+    /***********************************/
+
+    protected function _processValues()
+    {
+        foreach($this->_data as $i => $item) {
+            if (empty($item) || empty($item->type)) {
+                continue;
+            }
+
+            list($tag, $property) = $this->_parseKey($item->type);
+
+            if ($this->_checkIfGlobal($tag)) {
+                continue;
+            }
+
+            $key = $tag;
+
+            if ($this->_checkIfSpecial($tag)) {
+                $tag = $this->_dictionary[$tag];
+            }
+
+            $this->_storeCssValue($key, $tag, $property, $item->value);
+        }
     }
 
     /*********************************************************************************/
@@ -351,26 +411,8 @@ class CSSGenerator extends AbstractGenerator
             return false;
         }
 
-        foreach($this->_data as $i => $item) {
-            if (!ArraysHelper::checkArray($item)) {
-                continue;
-            }
-
-            list($tag, $property) = $this->_parseKey($item->type);
-        
-            if ($this->_checkIfGlobal($tag)) {
-                $this->_setGlobal($tag, $item->value);
-                continue;
-            }
-
-            $key = $tag;
-
-            if ($this->_checkIfSpecial($tag)) {
-                $tag = $this->_dictionary[$tag];
-            }
-
-            $this->_storeCssValue($key, $tag, $property, $item->value);
-        }
+        $this->_prepareGlobals();
+        $this->_processValues();
 
         $result = $this->_writeCss();
         $this->_setResult($result);
@@ -391,11 +433,11 @@ class CSSGenerator extends AbstractGenerator
         $file = '';
 
         if (!empty($this->_result)) {
-            $file = FilesHelper::createFile($filename . '.css', '../../dist/styles/', $this->_result);
+            $file = FilesHelper::createFileUsingCache($filename . '.css', '../../dist/styles/', $this->_result, 5);
         }
-
+        
         if ($file) {
-            EnqueuerHelper::enqueueStyle($filename, get_template_directory_uri() . 'dist/styles/' . $filename . '.css', ['sage/main.css'], false, 'all');
+            EnqueuerHelper::enqueueStyle($filename, get_stylesheet_directory_uri() . '/../dist/styles/' . $filename . '.css', ['sage/main.css'], false, 'all');
         }
     }
 }

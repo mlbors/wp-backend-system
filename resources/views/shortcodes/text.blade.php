@@ -1,5 +1,3 @@
-<pre>::: SHORTCODE ::: text</pre>
-
-<pre>
-@php print_r($data); @endphp
-</pre>
+<div class="text-shortcode">
+    <p>{{ $data }}</p>
+</div>
