@@ -46,7 +46,6 @@ class Redirection404State extends AbstractRedirectionState
     {
         $class = $this;
         $target = $this->_entity->target;
-        echo $target;
         add_action('template_redirect', function() use ($class, $target) {
             if (is_404()) {
                 $class->_executeRedirection($target);

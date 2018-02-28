@@ -96,7 +96,7 @@ class WPDBWidgetsContext extends AbstractContext
         $hasClassName = false;
         $name = (string)$queryArgs[0]->name;
 
-        $filepath = FilesHelper::checkIfFileExists($name, ['Widgets', 'Extends/Widgets']);
+        $filepath = FilesHelper::checkIfFileExists($name . '.php', ['Widgets', 'Extends/Widgets']);
         $filetokens = FilesHelper::getFileTokens($filepath);
 
         if (!empty($filetokens)) {

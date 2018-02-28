@@ -67,8 +67,6 @@ class GalleryView extends AbstractView
         $altData['items_per_row'] = $data['content']['page_builder_rows_cols_col_items_per_row'];
         $altData['col_size'] = 12/$altData['items_per_row'];
 
-        print_r($altData);
-
         parent::setData($altData);
     }
 

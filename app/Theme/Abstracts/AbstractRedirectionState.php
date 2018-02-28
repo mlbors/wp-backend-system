@@ -104,7 +104,6 @@ abstract class AbstractRedirectionState implements IState
 
     protected function _executeRedirection($target = null) 
     {
-        echo $target;
         wp_redirect(home_url($target));
         exit;
     }
