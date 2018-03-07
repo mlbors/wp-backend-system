@@ -2,7 +2,7 @@
 /**
  * WP System - CTEntity - Concrete Class
  *
- * @since       12.01.2018
+ * @since       2018.01.12
  * @version     1.0.0.0
  * @author      mlbors
  * @copyright

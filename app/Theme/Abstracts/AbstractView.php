@@ -2,7 +2,7 @@
 /**
  * WP System - AbstractView - Abstract Class
  *
- * @since       12.01.2018
+ * @since       2018.01.12
  * @version     1.0.0.0
  * @author      mlbors
  * @copyright
@@ -139,7 +139,7 @@ abstract class AbstractView implements IView
     {
         try {
             ob_start();
-            echo \App\template('builder-views/' . $this->_file, ['data' => $this->_data]);
+            echo \App\template($this->_file, ['data' => $this->_data]);
             return ob_get_clean();
         } catch (\Exception $e) {
             return false;

@@ -2,7 +2,7 @@
 /**
  * WP System - PageBuilderViewFactory - Concrete Class
  *
- * @since       12.01.2018
+ * @since       2018.01.12
  * @version     1.0.0.0
  * @author      mlbors
  * @copyright
@@ -78,39 +78,40 @@ class PageBuilderViewFactory extends AbstractViewFactory
 
     protected function _createView(): IView
     {
+        $directory = 'builder-views/';
         switch($this->_type) {
             case 'button':
-                return $this->_container->makeWith(ButtonView::class, ['file' => 'button']);
+                return $this->_container->makeWith(ButtonView::class, ['file' => $directory . 'button']);
                 break;
             case 'col':
-                return $this->_container->makeWith(ColView::class, ['file' => 'col']);
+                return $this->_container->makeWith(ColView::class, ['file' => $directory . 'col']);
                 break;
             case 'gallery':
-                return $this->_container->makeWith(GalleryView::class, ['file' => 'gallery']);
+                return $this->_container->makeWith(GalleryView::class, ['file' => $directory . 'gallery']);
                 break;
             case 'image':
-                return $this->_container->makeWith(ImageView::class, ['file' => 'image']);
+                return $this->_container->makeWith(ImageView::class, ['file' => $directory . 'image']);
                 break;
             case 'link':
-                return $this->_container->makeWith(LinkView::class, ['file' => 'link']);
+                return $this->_container->makeWith(LinkView::class, ['file' => $directory . 'link']);
                 break;
             case 'meta':
-                return $this->_container->makeWith(MetaView::class, ['file' => 'meta']);
+                return $this->_container->makeWith(MetaView::class, ['file' => $directory . 'meta']);
                 break;
             case 'row':
-                return $this->_container->makeWith(RowView::class, ['file' => 'row']);
+                return $this->_container->makeWith(RowView::class, ['file' => $directory . 'row']);
                 break;
             case 'rich_text':
-                return $this->_container->makeWith(RichTextView::class, ['file' => 'rich-text']);
+                return $this->_container->makeWith(RichTextView::class, ['file' => $directory . 'rich-text']);
                 break;
             case 'section':
-                return $this->_container->makeWith(SectionView::class, ['file' => 'section']);
+                return $this->_container->makeWith(SectionView::class, ['file' => $directory . 'section']);
                 break;
             case 'text':
-                return $this->_container->makeWith(TextView::class, ['file' => 'text']);
+                return $this->_container->makeWith(TextView::class, ['file' => $directory . 'text']);
                 break;
             default:
-                return $this->_container->makeWith(TextView::class, ['file' => 'text']);
+                return $this->_container->makeWith(TextView::class, ['file' => $directory . 'text']);
                 break;
         }
     }
