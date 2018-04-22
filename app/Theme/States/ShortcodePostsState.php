@@ -112,9 +112,9 @@ class ShortcodePostsState extends AbstractShortcodeState
         }
 
         if (!empty($this->_data['limit'])) {
-            $args['post_per_page'] = $this->_data['limit'];
+            $args['posts_per_page'] = $this->_data['limit'];
         } elseif(empty($this->_data['limit'])) {
-            $args['post_per_page'] = -1;
+            $args['posts_per_page'] = -1;
         }
 
         if (!empty($this->_data['includes'])) {
